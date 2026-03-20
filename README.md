@@ -1,5 +1,5 @@
 
-<h1 align="center">ResgaTech</h1>
+<h1 align="center">InformaTech</h1>
 
 <p align="center">
   
