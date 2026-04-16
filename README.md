@@ -36,7 +36,7 @@ O projeto ultiliza dados de casos anteriores para auxiliar, definir zonas de ris
 Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731b91ac09f22e4b0cb7d59e103882A0C66/resgatech)
 
 
-## Apresentação
+## Primeira Banca de Apresentação
 
 [Apresentação Do Canva](https://www.canva.com/design/DAGZ07xiAhw/WQPustfPXW6BpEaH1Ip4UQ/view?utm_content=DAGZ07xiAhw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2a30923b01)
 
