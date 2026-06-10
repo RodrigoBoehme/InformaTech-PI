@@ -22,12 +22,12 @@ O projeto ultiliza dados de casos anteriores para auxiliar, definir zonas de ris
 
 
 ## Modelo Conceitual
-<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/ModelConceitual1.brM3">
+<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/ModelConceitual1.png">
 
 
 
 ## Modelo Logico
-<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/ModelLogico.brM3">
+<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/ModelLogico.png">
 
 
 
