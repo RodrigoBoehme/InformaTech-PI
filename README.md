@@ -21,13 +21,9 @@ O projeto ultiliza dados de casos anteriores para auxiliar, definir zonas de ris
 
 
 
-## Modelo Conceitual
-<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/Modelo%20Conceitual.png">
+## Imagens Do Banco de Dados
+<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/ImgBancoDeDados.png">
 
-
-
-## Modelo Logico
-<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/Modelo%20Logico.png">
 
 
 
