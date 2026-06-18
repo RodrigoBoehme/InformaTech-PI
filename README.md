@@ -59,7 +59,7 @@ Our project aims to provide assistance in the event of flooding in the São Leop
 - JavaScript
 - BrModelo
 
-## DFeatures
+## Features
 Apps shows maps wich shows safe Areas/Risk Zones to inform people in the area so they can safely got to the safe zone battle royale 
 
 ## Installation 
