@@ -41,23 +41,23 @@ Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731
 
 [Projeto](https://docs.google.com/document/d/1l-mksFd1MLT9Tp9tfvOTlnNB7cVMcfGWuMv-su7gLb0/edit?usp=sharing)
 
-# InformaTechUwu
+# InformaTech
 
 ## Team
--Éverton Eduardo Rodrigues Reis
--João Pedro
--Rian Andre Santos Cabral
--Rodrigo Boehme
+- Éverton Eduardo Rodrigues Reis
+- João Pedro
+- Rian Andre Santos Cabral
+- Rodrigo Boehme
 
 ## Description
 Our project aims to provide assistance in the event of flooding in the São Leopoldo area, in the state of Big Laugh of South. The project uses data from past incidents to help identify risk zones and safe areas.
 
 ## Technologies used
--React Native
--SQL
--TypeScript
--JavaScript
--BrModelo
+- React Native
+- SQL
+- TypeScript
+- JavaScript
+- BrModelo
 
 ## DFeatures
 Apps shows maps wich shows safe Areas/Risk Zones to inform people in the area so they can safely got to the safe zone battle royale 
@@ -83,10 +83,38 @@ F1.0.5
 *
 
 ## RoadMap
--fix everything
--add everything?
--Something Productive
+- fix everything
+- add everything?
+- Something Productive
 -stop with the jokes
 
 ## Whats needed
 -VsCode (app needed to clone and use everything)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
