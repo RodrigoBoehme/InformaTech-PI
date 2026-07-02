@@ -63,64 +63,183 @@ Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731
 
 [Documentação do Projeto](https://docs.google.com/document/d/1l-mksFd1MLT9Tp9tfvOTlnNB7cVMcfGWuMv-su7gLb0/edit?usp=sharing)
 
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=7ED957&height=100&section=footer"/>
 
 ---
----
----
----
----
----
 
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&color=7ED957"/> 
 
 # InformaTech
 
 ## Team
-- Éverton Eduardo Rodrigues Reis
-- João Pedro
-- Rian Andre Santos Cabral
-- Rodrigo Boehme
 
-## Description
-Our project aims to provide assistance in the event of flooding in the São Leopoldo area, in the state of Big Laugh of South. The project uses data from past incidents to help identify risk zones and safe areas.
+| Name | Age | Role |
+|------|-----:|------|
+| Everton Eduardo Rodrigues Reis | 17 | Full Stack Developer |
+| João Pedro | 18 | Full Stack Developer |
+| Rian Andre Santos Cabral | 23 | Vice Team Leader |
+| Rodrigo Boehme | 23 | Team Leader |
 
-## Technologies used
+---
+
+## Project Description
+
+InformaTech is a project developed to assist people during flood emergencies in the city of São Leopoldo, Rio Grande do Sul, Brazil.
+
+The application uses historical flood data to identify high-risk areas and safe zones, providing useful information that helps residents make safer decisions during emergencies.
+
+---
+
+## Database
+
+<details>
+<summary>Click to expand</summary>
+
+<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/ImgBancoDeDados.png">
+
+</details>
+
+---
+
+## Agile Methodology
+
+Project Board (Trello): [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731b91ac09f22e4b0cb7d59e103882A0C66/resgatech)
+
+---
+
+## First Project Presentation
+
+Presentation:[Apresentação](https://www.canva.com/design/DAGZ07xiAhw/WQPustfPXW6BpEaH1Ip4UQ/view?utm_content=DAGZ07xiAhw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2a30923b01)
+
+---
+
+## Articles & Documentation
+
+**Overleaf**:[OverLeaf](https://www.overleaf.com/read/bgqcjmdmvmhm#705f8c)
+
+**Project Documentation**:[Documentação do Projeto](https://docs.google.com/document/d/1l-mksFd1MLT9Tp9tfvOTlnNB7cVMcfGWuMv-su7gLb0/edit?usp=sharing)
+
+---
+
+## Technologies
+
 - React Native
-- SQL
 - TypeScript
 - JavaScript
+- SQL
+- Expo
 - BrModelo
 
+---
+
 ## Features
-Apps shows maps wich shows safe Areas/Risk Zones to inform people in the area so they can safely got to the safe zone battle royale 
 
-## Installation 
+- Flood risk area mapping
+- Safe area identification
+- Real-time weather information
+- River level monitoring
+- Evacuation route assistance
+- Shelter location support
+- Future integration with rescue teams
+- Educational content for flood prevention
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
 git clone https://github.com/Bayotto/Criador-de-projetos-autom-tico.git
-this link helps create a full repo, just like our was done
-and git gud
-good luck
+```
 
-## How To Run
-in the console send the following code:
+Install the dependencies:
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn
+```
+
+---
+
+## Running the Project
+
+Start the development server:
+
+```bash
 npx expo start
+```
+
+---
 
 ## Changelog
 
-F1.0.? This was made
-F1.0.3 Group had its name changed
-F1.0.4 The Images were deployed
-F1.0.5 
+### Version 1.0.0
+- Initial project structure.
 
-## Know Issues
-*
+### Version 1.0.3
+- Team name updated.
 
-## RoadMap
-- fix everything
-- add everything?
-- Something Productive
--stop with the jokes
+### Version 1.0.4
+- Images added to the repository.
 
-## Whats needed
--VsCode (app needed to clone and use everything)
+### Version 1.0.5
+- General improvements and bug fixes.
+
+---
+
+## Known Issues
+
+- Some planned features are still under development.
+- API integrations are not yet complete.
+
+---
+
+## Roadmap
+
+- Improve the user interface.
+- Integrate Google Maps API.
+- Add real-time flood monitoring.
+- Implement shelter occupancy information.
+- Add emergency contact support.
+- Improve application performance.
+
+---
+
+## Requirements
+
+- Visual Studio Code
+- Node.js
+- Git
+- Expo CLI
+
+---
+
+## Objective
+
+The goal of InformaTech is to provide an accessible and efficient platform that helps residents, authorities, and rescue teams during flood emergencies.
+
+The application aims to:
+
+- Map flood-risk and safe areas.
+- Provide evacuation routes.
+- Display weather forecasts and river level updates.
+- Assist rescue operations.
+- Locate temporary shelters.
+- Promote flood preparedness and prevention.
+
+---
+
+## Summary
+
+InformaTech is based on historical flood data from São Leopoldo, including major flood events dating back to 1965, with special attention to the 2024 flood that affected approximately 80% of the city.
+
+The application will update river level and local weather information every 15 minutes, helping users make safer decisions during flood emergencies.
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=7ED957&height=100&section=footer"/>
 
