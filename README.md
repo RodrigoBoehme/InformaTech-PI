@@ -51,7 +51,7 @@ Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731
 
 ---
 
-## Primeira Banca de Apresentação
+## 🧑🏻‍🏫 Primeira Banca de Apresentação
 
 [Apresentação](https://www.canva.com/design/DAGZ07xiAhw/WQPustfPXW6BpEaH1Ip4UQ/view?utm_content=DAGZ07xiAhw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2a30923b01)
 
@@ -69,9 +69,15 @@ Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&color=7ED957"/> 
 
-# InformaTech
+
+<h1 align="center">InformaTech</h1>
+
+<p align="center">
+  
+
 
 ## Team
+
 
 | Name | Age | Role |
 |------|-----:|------|
