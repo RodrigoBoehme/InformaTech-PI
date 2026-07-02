@@ -35,7 +35,7 @@ O projeto ultiliza dados de casos anteriores para auxiliar, definir zonas de ris
 <details>
 <summary>Clique para abrir</summary>
 
-<img src="https://github.com/RodrigoBoehme/ProjetoIntegrador/blob/main/ImgBancoDeDados.png">
+<img src="https://github.com/RodrigoBoehme/InformaTech-PI/blob/main/IMAGENS/ImgBancoDeDados.png">
 
 </details>
 
