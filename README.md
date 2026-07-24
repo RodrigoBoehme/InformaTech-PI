@@ -10,12 +10,14 @@
 
 
 ```md
-| Nome | Idade  | Cargo |
-|------|--------|-------|
-| Éverton Eduardo Rodrigues Reis | 17 |  FullStack   |
-| João Pedro                     | 18 |  FullStack   |
-| Rian Andre Santos Cabral       | 23 |  vice-líder  |
-| Rodrigo Boehme                 | 23 |  Líder       |
+ ________________________________________________________
+| Nome                           | Idade  | Cargo        |
+|--------------------------------|--------|--------------|
+| Éverton Eduardo Rodrigues Reis | 17     |  FullStack   |
+| João Pedro                     | 18     |  FullStack   |
+| Rian Andre Santos Cabral       | 23     |  vice-líder  |
+| Rodrigo Boehme                 | 23     |  Líder       |
+ ________________________________________________________
 ```
 ---
 
