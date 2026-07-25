@@ -64,3 +64,40 @@ Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731
 [Documentação do Projeto](https://docs.google.com/document/d/1l-mksFd1MLT9Tp9tfvOTlnNB7cVMcfGWuMv-su7gLb0/edit?usp=sharing)
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=7ED957&height=100&section=footer"/>
+
+
+# InformaTech Full Stack
+
+Projeto com aplicativo React Native/Expo e API Node.js.
+
+## Backend intermediário e didático
+
+Tecnologias principais: TypeScript, Express, TypeORM, MySQL, JWT, bcrypt, Zod e
+Swagger. A arquitetura possui controllers, services e repositories reais.
+
+**Não utiliza migrations:** o TypeORM cria as tabelas automaticamente com
+`synchronize: true`. Consulte `backend/README-BACKEND.md` para executar.
+
+## Pastas
+
+- `backend`: API REST e documentação Swagger.
+- `mobile`: aplicativo React Native com Expo Router.
+
+
+## Melhorias da versão 1.1
+- CRUD de zonas de risco circulares persistidas no MySQL.
+- Nível de inundação: baixo, moderado, alto ou crítico.
+- Criação de círculo por clique, arraste e soltura no mapa.
+- Somente ADMIN pode criar, editar ou excluir zonas.
+- Todos os usuários autenticados podem visualizar as zonas.
+- Campos de senha com botão para mostrar/ocultar.
+- Validação de e-mail no app e no backend com Zod.
+- Splash screen configurada com imagem.
+- TypeORM com `synchronize: true`, sem migrations.
+
+## Criar o administrador
+No backend, revise os campos `ADMIN_*` do arquivo `.env` e execute:
+```bash
+npm run create-admin
+```
+Depois entre no aplicativo com o e-mail e a senha definidos. Troque a senha padrão antes de publicar.
