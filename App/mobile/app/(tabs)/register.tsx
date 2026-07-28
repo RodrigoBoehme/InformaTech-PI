@@ -264,7 +264,7 @@ export default function Register() {
               >
                 {role === 'REQUESTER'
                   ? 'Preciso de ajuda'
-                  : 'Quero ajudar'}
+                  : 'Posso ajudar'}
               </Text>
             </Pressable>
           )

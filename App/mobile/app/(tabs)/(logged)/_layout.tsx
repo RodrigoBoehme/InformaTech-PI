@@ -13,6 +13,8 @@ export default function TabLayout() {
     // 
     <AuthProvider>
 
+      
+
     <Tabs
     screenOptions={{
       headerShown: false,
@@ -31,6 +33,12 @@ export default function TabLayout() {
       
     }}
     >
+
+<Tabs.Screen
+name='preparos'
+options={{href:null}}
+/>
+
       <Tabs.Screen
       name='home'
       options={{
@@ -198,6 +206,11 @@ options={{
           />
         ),
 }}
+/>
+
+<Tabs.Screen
+name='preparos'
+options={{href:null}}
 />
 
     </Tabs>
