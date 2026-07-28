@@ -5,9 +5,9 @@ type Props={
     width:number
 
 }
-export default function Background1(Props:Props){
+export default function Background1(){
  
-  const {width,height}= Props
+  const {width,height}= useWindowDimensions()
     return(
     <View style={{width:width,height:height,position:"absolute"}}>
       <View style={[styles.glowTop, { top: -height * 0.4, right: -width * 0.8, width: width * 1.4, height: width * 1.3, borderRadius: (width * 1) / 2 }]} />
