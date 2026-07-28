@@ -98,7 +98,7 @@ options={{
   title:"Perfil",
   tabBarIcon: ({ color, size }) => (
           <Ionicons
-            name="person-outline"
+            name="person"
             size={size}
             color={color}
           />
@@ -189,7 +189,7 @@ options={{
   title:"Perfil",
   tabBarIcon: ({ color, size }) => (
           <Ionicons
-            name="person-outline"
+            name="person"
             size={size}
             color={color}
           />
