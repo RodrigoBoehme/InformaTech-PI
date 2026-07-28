@@ -206,7 +206,7 @@ map.on('click',e=>{if(!drawing||center)return;if(preview)map.removeLayer(preview
   return (
     <View style={{ flex: 1, backgroundColor: '#07111D' }}>
       {isAdmin && (
-        <View style={{ maxHeight: 430, backgroundColor: '#fff', padding: 12 }}>
+        <View style={{ maxHeight: 430, backgroundColor: '#fff', padding: 12,paddingTop:30 }}>
           <ScrollView contentContainerStyle={{ gap: 8 }} keyboardShouldPersistTaps="handled">
             <Text style={{ fontSize: 18, fontWeight: '800' }}>Administração das zonas de risco</Text>
             <Text style={{ color: '#66778A' }}>Informe os dados, escolha o raio e toque no mapa para posicionar a zona.</Text>
@@ -237,7 +237,7 @@ map.on('click',e=>{if(!drawing||center)return;if(preview)map.removeLayer(preview
           </ScrollView>
         </View>
       )}
-      {!isAdmin && <View style={{ padding: 10, backgroundColor: '#fff' }}><Text style={{ fontWeight: '800' }}>Mapa de pedidos e zonas de risco</Text><Text style={{ color: '#66778A' }}>As áreas coloridas indicam o nível estimado de inundação.</Text></View>}
+      {!isAdmin && <View style={{ padding: 10, backgroundColor: '#fff',paddingTop:30 }}><Text style={{ fontWeight: '800' }}>Mapa de pedidos e zonas de risco</Text><Text style={{ color: '#66778A' }}>As áreas coloridas indicam o nível estimado de inundação.</Text></View>}
       <WebView ref={web} originWhitelist={['*']} source={{ html }} onMessage={onMessage} javaScriptEnabled domStorageEnabled />
     </View>
   )

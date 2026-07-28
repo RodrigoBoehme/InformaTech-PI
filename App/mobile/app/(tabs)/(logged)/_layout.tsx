@@ -9,7 +9,7 @@ import { useAuth } from '@/contexts/AuthContext'
 export default function TabLayout() {
   const { user } = useAuth()
   const isAdmin = user?.role === 'ADMIN'
-  if(isAdmin)return (
+  if(isAdmin)return(
     // 
     <AuthProvider>
 
@@ -20,12 +20,15 @@ export default function TabLayout() {
       tabBarStyle: {
         backgroundColor: "#6a2e2e00",
         borderTopWidth: 0,
-        height: 80,
+        height: 100,
+        opacity:50,
+      
       },
 
       tabBarActiveTintColor: colors.primary,
 
       tabBarInactiveTintColor: "#777",
+      
     }}
     >
       <Tabs.Screen
