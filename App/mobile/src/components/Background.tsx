@@ -1,7 +1,13 @@
 import { View,StyleSheet,useWindowDimensions } from "react-native"
 
-export default function Background1(){
-      const {width,height}=useWindowDimensions()
+type Props={
+    height:number
+    width:number
+
+}
+export default function Background1(Props:Props){
+ 
+  const {width,height}= Props
     return(
     <View>
           <View style={[styles.glowTop, { top: -height * 0.4, right: -width * 0.8, width: width * 1.4, height: width * 1.3, borderRadius: (width * 1) / 2 }]} />
