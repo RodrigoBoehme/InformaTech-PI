@@ -7,6 +7,7 @@ import { PasswordInput } from '@/components/PasswordInput'
 import { useAuth } from '@/contexts/AuthContext'
 import { colors } from '@/constants/theme'
 import { StyleSheet } from 'react-native'
+import Background1 from '@/components/Background'
 
 
 export default function Login() {
@@ -41,10 +42,7 @@ export default function Login() {
       
       }]}>
         
-      <View style={[styles.glowTop, { top: -height * 0.4, right: -width * 0.8, width: width * 1.4, height: width * 1.3, borderRadius: (width * 1) / 2 }]} />
-      <View style={[styles.glowBottom, { bottom: -height * 0.4, left: -width * 0.8, width: width * 1.4, height: width * 1.2, borderRadius: (width * 1) / 2 }]} />
-      <View style={[styles.glowBottom, { top: -height * 0.4, left: -width * 0.9, width: width * 1.44, height: width * 1.1, borderRadius: (width * 1) / 2 }]} />
-
+        <Background1/>
 
 
       <Text style={{ fontSize: 32, fontWeight: '800', color: colors.card }}>Informa<Text style={{color:colors.primary}}>Tech</Text></Text>
