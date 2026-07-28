@@ -14,7 +14,7 @@ export default function Home(){
  const {user,signOut}=useAuth(); const [items,setItems]=useState<Pedido[]>([]); const [loading,setLoading]=useState(false)
  const load=useCallback(async()=>{setLoading(true);try{setItems((await api.get('/pedidos')).data)}catch{Alert.alert('Erro','Não foi possível carregar os pedidos.')}finally{setLoading(false)}},[])
  useFocusEffect(useCallback(()=>{load()},[load]))
- async function sair(){await signOut();router.replace('/login')}
+ async function sair(){await signOut();router.replace('../login')}
  async function aceitar(id:string){await api.patch(`/pedidos/${id}/aceitar`);load()}
  return <Screen scroll={false}>
   <Header title="InformaTech" action={<Pressable onPress={sair}><Ionicons name="log-out-outline" size={25} color={colors.card}/></Pressable>}/>

@@ -159,7 +159,7 @@ export default function Register() {
         style={{
           fontSize: 28,
           fontWeight: '800',
-          color: colors.secondary
+          color: colors.primary
         }}
       >
         Criar conta

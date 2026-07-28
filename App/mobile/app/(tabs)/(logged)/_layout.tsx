@@ -62,6 +62,10 @@ export default function TabLayout() {
       name='users'
       options={{href:null}}
       />
+<Tabs.Screen
+ name='request/[id]'
+ options={{href:null}}
+/>
 
     </Tabs>
     </AuthProvider>

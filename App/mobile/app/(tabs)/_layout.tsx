@@ -8,71 +8,9 @@ import { colors } from '@/constants/theme';
 export default function TabLayout() {
   return (
     // 
-        <AuthProvider>
-    <Tabs
-    screenOptions={{
-      headerShown: false,
-
-      tabBarStyle: {
-        backgroundColor: "#6a2e2e00",
-        borderTopWidth: 0,
-        height: 80,
-      },
-
-      tabBarActiveTintColor: colors.primary,
-
-      tabBarInactiveTintColor: "#777",
-    }}
-    >
-      <Tabs.Screen
-      name='home'
-      options={{
-        href:null,
-        title:'HomSCreen',
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons
-            name="map"
-            size={size}
-            color={color}
-          />
-        ),
-        
-      }}
-      />
-      
-      
-      <Tabs.Screen
-      name='index'
-      options={{href:null}}
-      />
-      <Tabs.Screen
-      name='login'
-      options={{href:null}}
-      />
-      <Tabs.Screen
-      name='register'
-      options={{href:null}}
-      />
-  <Tabs.Screen
-      name='new-request'
-      options={{href:null}}
-      />
-
-<Tabs.Screen
-      name='users'
-      options={{href:null}}
-      />
-
-<Tabs.Screen
-      name='splash'
-      options={{href:null}}
-      />
-
-<Tabs.Screen
-      name='termos'
-      options={{href:null}}
-      />
-    </Tabs>
+    <AuthProvider>
+      <StatusBar style="dark" />
+      <Stack screenOptions={{ headerShown: false }} />
     </AuthProvider>
     
   )
