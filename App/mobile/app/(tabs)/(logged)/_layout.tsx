@@ -8,7 +8,8 @@ import { colors } from '@/constants/theme';
 export default function TabLayout() {
   return (
     // 
-        <AuthProvider>
+    <AuthProvider>
+
     <Tabs
     screenOptions={{
       headerShown: false,
@@ -27,7 +28,6 @@ export default function TabLayout() {
       <Tabs.Screen
       name='home'
       options={{
-        href:null,
         title:'HomSCreen',
         tabBarIcon: ({ color, size }) => (
           <Ionicons
@@ -39,20 +39,20 @@ export default function TabLayout() {
         
       }}
       />
+      <Tabs.Screen
+      name='map'
+      options={{
+        title:"Mapa",
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons
+            name="map"
+            size={size}
+            color={color}
+          />
+        ),
+      }}
+      />
       
-      
-      <Tabs.Screen
-      name='index'
-      options={{href:null}}
-      />
-      <Tabs.Screen
-      name='login'
-      options={{href:null}}
-      />
-      <Tabs.Screen
-      name='register'
-      options={{href:null}}
-      />
   <Tabs.Screen
       name='new-request'
       options={{href:null}}
@@ -63,17 +63,7 @@ export default function TabLayout() {
       options={{href:null}}
       />
 
-<Tabs.Screen
-      name='splash'
-      options={{href:null}}
-      />
-
-<Tabs.Screen
-      name='termos'
-      options={{href:null}}
-      />
     </Tabs>
     </AuthProvider>
-    
   )
 }
