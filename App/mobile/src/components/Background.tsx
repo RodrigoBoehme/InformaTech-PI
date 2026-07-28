@@ -16,16 +16,19 @@ export default function Background1(){
     </View>
     )
 }
-
+function color(){
+    let cores=["rgba(132, 204, 22, 0.12)","rgba(30, 41, 59, 0.5)"]
+    return cores[Math.floor(Math.random()*cores.length)]
+}
 
 const styles=StyleSheet.create({
     glowTop: {
     position: "absolute",
-    backgroundColor: "rgba(132, 204, 22, 0.12)", 
+    backgroundColor: color(), 
   },
   glowBottom: {
     position: "absolute",
-    backgroundColor: "rgba(30, 41, 59, 0.5)", 
+    backgroundColor: color(), 
   },
   mainContent: {
     flex: 1,
