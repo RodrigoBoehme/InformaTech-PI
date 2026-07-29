@@ -20,12 +20,14 @@ export default function Home(){
  async function aceitar(id:string){await api.patch(`/pedidos/${id}/aceitar`);load()}
  return <Screen scroll={false}>
 
-    <Background1/>
   <Header title="InformaTech" action={<Pressable onPress={sair}><Ionicons name="log-out-outline" size={25} color={colors.card}/></Pressable>}/>
+  
+  <Background1/>
   <Text style={s.welcome}>Olá, {user?.name}. Como podemos ajudar?</Text>
   <View style={s.actions}>
  
    <Pressable style={s.action} onPress={()=>router.replace('/centralDeApoio')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Central de Apoio</Text></Pressable>
+   <Pressable style={s.action} onPress={()=>router.replace('/new-request')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Novo Pedido</Text></Pressable>
 
   </View>
   <Text style={s.section}>Pedidos recentes</Text>
