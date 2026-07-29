@@ -20,7 +20,7 @@ export default function TabLayout() {
       headerShown: false,
 
       tabBarStyle: {
-        backgroundColor: "#6a2e2e00",
+        backgroundColor: "#000000",
         borderTopWidth: 0,
         height: 100,
         opacity:50,

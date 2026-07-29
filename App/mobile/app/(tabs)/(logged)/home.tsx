@@ -29,11 +29,79 @@ export default function Home(){
 
   </View>
   <Text style={s.section}>Pedidos recentes</Text>
-  <FlatList refreshing={loading} onRefresh={load} data={items} keyExtractor={i=>i.id} contentContainerStyle={{gap:12,paddingBottom:30}} renderItem={({item})=><Pressable onPress={()=>router.push({pathname:'/request/[id]',params:{id:item.id}})} style={s.card}>
-   <View style={s.between}><Text style={s.cardTitle}>{item.title}</Text><Text style={s.badge}>{labels[item.status]}</Text></View>
-   <Text style={s.meta}>{item.category} • Prioridade {labels[item.priority]}</Text><Text numberOfLines={2} style={s.description}>{item.description}</Text>
+  <FlatList 
+      refreshing={loading} 
+      onRefresh={load} 
+      
+      data={items} keyExtractor={i=>i.id} 
+      contentContainerStyle={{gap:12,paddingBottom:30}} 
+      renderItem={({item})=><Pressable 
+      onPress={()=>router.push({pathname:'/request/[id]',params:{id:item.id}})} 
+      style={s.card}>
+   <View style={s.between}>
+        <Text style={s.cardTitle}>{item.title}</Text>
+        <Text style={s.badge}>{labels[item.status]}</Text>
+   </View>
+   <Text style={s.meta}>{item.category} • Prioridade {labels[item.priority]}</Text>
+   <Text numberOfLines={2} style={s.description}>{item.description}</Text>
    {item.status==='OPEN'&&user?.role==='VOLUNTEER'?<Button title="Aceitar atendimento" onPress={()=>aceitar(item.id)}/>:null}
   </Pressable>}/>
  </Screen>
 }
-const s=StyleSheet.create({welcome:{color:'#C8D5E3',fontSize:16},actions:{flexDirection:'row',flexWrap:'wrap',gap:10},action:{width:'48%',backgroundColor:colors.surface,padding:16,borderRadius:16,gap:8},actionText:{color:colors.card,fontWeight:'700'},section:{fontSize:20,fontWeight:'800',color:colors.card,marginTop:4},card:{backgroundColor:colors.card,padding:16,borderRadius:16,gap:8},between:{flexDirection:'row',justifyContent:'space-between',gap:10},cardTitle:{fontSize:18,fontWeight:'800',color:colors.text,flex:1},badge:{fontSize:12,fontWeight:'800',color:colors.secondary},meta:{color:colors.muted},description:{color:colors.text}})
+const s=StyleSheet.create(
+  {
+    welcome:{
+      color:'#C8D5E3',
+      fontSize:16
+    },
+    actions:{
+      flexDirection:'row',
+      flexWrap:'wrap',
+      gap:10
+    },
+    action:{
+      width:'48%',
+      backgroundColor:colors.surface,
+      padding:16,
+      borderRadius:16,
+      gap:8
+    },
+    actionText:{
+      color:colors.card,
+      fontWeight:'700'
+    },
+    section:{
+      fontSize:20,
+      fontWeight:'800',
+      color:colors.card,
+      marginTop:4
+    },
+    card:{
+      backgroundColor:colors.card,
+      padding:16,
+      borderRadius:16,
+      gap:8
+    },
+    between:{
+      flexDirection:'row',
+      justifyContent:'space-between',
+      gap:10
+    },
+    cardTitle:{
+      fontSize:18,
+      fontWeight:'800',
+      color:colors.text,
+      flex:1
+    },
+    badge:{
+      fontSize:12,
+      fontWeight:'800',
+      color:colors.secondary
+    },
+    meta:{
+      color:colors.muted
+    },
+    description:{
+      color:colors.text
+    }
+  })
