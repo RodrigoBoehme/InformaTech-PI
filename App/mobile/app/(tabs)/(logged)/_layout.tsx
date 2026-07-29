@@ -35,6 +35,11 @@ export default function TabLayout() {
     >
 
 <Tabs.Screen
+name='centralDeApoio'
+options={{href:null}}
+/>
+
+<Tabs.Screen
 name='preparos'
 options={{href:null}}
 />
@@ -210,6 +215,11 @@ options={{
 
 <Tabs.Screen
 name='preparos'
+options={{href:null}}
+/>
+
+<Tabs.Screen
+name='centralDeApoio'
 options={{href:null}}
 />
 

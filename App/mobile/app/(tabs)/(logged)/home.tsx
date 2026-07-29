@@ -9,6 +9,7 @@ import { colors } from '@/constants/theme'
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header'
 import { Screen } from '@/components/Screen'
+import Background1 from '@/components/Background'
 
 const labels={OPEN:'Aberto',IN_PROGRESS:'Em atendimento',RESOLVED:'Concluído',CANCELED:'Cancelado',LOW:'Baixa',MEDIUM:'Média',HIGH:'Alta',CRITICAL:'Crítica'} as Record<string,string>
 export default function Home(){
@@ -18,11 +19,13 @@ export default function Home(){
  async function sair(){await signOut();router.replace('../login')}
  async function aceitar(id:string){await api.patch(`/pedidos/${id}/aceitar`);load()}
  return <Screen scroll={false}>
+
+    <Background1/>
   <Header title="InformaTech" action={<Pressable onPress={sair}><Ionicons name="log-out-outline" size={25} color={colors.card}/></Pressable>}/>
   <Text style={s.welcome}>Olá, {user?.name}. Como podemos ajudar?</Text>
   <View style={s.actions}>
  
-   <Pressable style={s.action} onPress={()=>router.push('/preparos')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Preparos</Text></Pressable>
+   <Pressable style={s.action} onPress={()=>router.replace('/centralDeApoio')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Central de Apoio</Text></Pressable>
 
   </View>
   <Text style={s.section}>Pedidos recentes</Text>

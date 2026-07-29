@@ -1,240 +1,235 @@
-import { useState } from 'react'
-import { Alert, Pressable, Text, View, useWindowDimensions } from 'react-native'
-import { Link, router } from 'expo-router'
-import { Button } from '@/components/Button'
+import React from 'react'
+import {
+  Text,
+  View,
+  ScrollView,
+  Pressable,
+  StyleSheet,
+  useWindowDimensions,
+  ViewStyle,
+  TextStyle
+} from 'react-native'
+import { router } from 'expo-router'
 import { colors } from '@/constants/theme'
-import { StyleSheet } from 'react-native'
-import { ScrollView } from 'react-native'
 
+export default function Preparos(): React.JSX.Element {
+  const { width, height } = useWindowDimensions()
 
-export default function preparos(){
-  const {width,height}=useWindowDimensions()
+  const dynamicGlowTopStyle: ViewStyle = {
+    top: -height * 0.3,
+    right: -width * 0.5,
+    width: width * 1.2,
+    height: width * 1.2,
+    borderRadius: (width * 1.2) / 2
+  }
 
-    return(
-        <View style={[{ flex: 1, padding: 24, justifyContent: 'center', gap: 14, backgroundColor: colors.background ,  },{width:width,height:height}]}>
-            <View style={[styles.glowTop, { top: -height * 0.4, right: -width * 0.8, width: width * 1.4, height: width * 1.3, borderRadius: (width * 1) / 2 }]} />
-            <View style={[styles.glowBottom, { bottom: -height * 0.4, left: -width * 0.8, width: width * 1.4, height: width * 1.2, borderRadius: (width * 1) / 2 }]} />
-            <View style={[styles.glowBottom, { top: -height * 0.4, left: -width * 0.9, width: width * 1.44, height: width * 1.1, borderRadius: (width * 1) / 2 }]} />
-            <ScrollView>
-            <ScrollView showsVerticalScrollIndicator={false}>
-  <Text style={{ color: "#fff", fontSize: 24, marginTop: 20, marginBottom: 15, textAlign: "center", fontWeight: "bold" }}>
-    O que levar em caso de enchente
-  </Text>
+  return (
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      {/* Luz de fundo */}
+      <View style={[styles.glowTop, dynamicGlowTopStyle]} />
 
-  <Text style={{ color: "#35e6c6", fontSize: 18, fontWeight: "bold", marginTop: 10 }}>
-    📄 Documentos
-  </Text>
-
-  <Text style={{ color: "#fff", textAlign: "justify", marginTop: 5, fontSize: 14 }}>
-    • RG e CPF{"\n"}
-    • Certidão de nascimento ou casamento{"\n"}
-    • Cartão do SUS{"\n"}
-    • Cartões bancários{"\n"}
-    • Documentos do veículo{"\n"}
-    • Coloque tudo em um saco plástico ou pasta impermeável.
-  </Text>
-
-  <Text style={{ color: "#35e6c6", fontSize: 18, fontWeight: "bold", marginTop: 20 }}>
-    👕 Roupas
-  </Text>
-
-  <Text style={{ color: "#fff", textAlign: "justify", marginTop: 5, fontSize: 14 }}>
-    • Troca de roupas{"\n"}
-    • Casaco{"\n"}
-    • Roupa íntima{"\n"}
-    • Toalha{"\n"}
-    • Calçado fechado ou botas.
-  </Text>
-
-  <Text style={{ color: "#35e6c6", fontSize: 18, fontWeight: "bold", marginTop: 20 }}>
-    🍞 Alimentos
-  </Text>
-
-  <Text style={{ color: "#fff", textAlign: "justify", marginTop: 5, fontSize: 14 }}>
-    • Água potável{"\n"}
-    • Barras de cereal{"\n"}
-    • Biscoitos{"\n"}
-    • Enlatados{"\n"}
-    • Leite longa vida{"\n"}
-    • Abridor de latas.
-  </Text>
-
-  <Text style={{ color: "#35e6c6", fontSize: 18, fontWeight: "bold", marginTop: 20 }}>
-    💊 Medicamentos
-  </Text>
-
-  <Text style={{ color: "#fff", textAlign: "justify", marginTop: 5, fontSize: 14 }}>
-    • Remédios de uso contínuo{"\n"}
-    • Kit de primeiros socorros{"\n"}
-    • Máscaras{"\n"}
-    • Álcool em gel.
-  </Text>
-
-  <Text style={{ color: "#35e6c6", fontSize: 18, fontWeight: "bold", marginTop: 20 }}>
-    🔦 Itens importantes
-  </Text>
-
-  <Text style={{ color: "#fff", textAlign: "justify", marginTop: 5, fontSize: 14 }}>
-    • Lanterna{"\n"}
-    • Pilhas extras{"\n"}
-    • Carregador de celular{"\n"}
-    • Power Bank carregado{"\n"}
-    • Rádio portátil{"\n"}
-    • Apito{"\n"}
-    • Dinheiro em espécie.
-  </Text>
-
-  <Text style={{ color: "#35e6c6", fontSize: 18, fontWeight: "bold", marginTop: 20 }}>
-    🐶 Se houver animais
-  </Text>
-
-  <Text style={{ color: "#fff", textAlign: "justify", marginTop: 5, fontSize: 14 }}>
-    • Ração{"\n"}
-    • Água{"\n"}
-    • Coleira e guia{"\n"}
-    • Caixa de transporte, se possível{"\n"}
-    • Medicamentos do animal.
-  </Text>
-
-  <Text style={{ color: "#FFD54F", textAlign: "justify", marginTop: 25, fontSize: 14 }}>
-    ⚠️ Sempre saia de casa quando houver orientação da Defesa Civil ou das autoridades. Nunca tente atravessar áreas alagadas a pé ou de carro.
-  </Text>
-
-  <Pressable
-    onPress={() => router.back()}
-    style={{
-      margin: 20,
-      marginBottom: 30,
-      backgroundColor: colors.primary,
-      alignItems: "center",
-      padding: 12,
-      borderRadius: 15,
-    }}
-  >
-    <Text style={{ color: "#fff", fontWeight: "bold" }}>
-      Voltar
-    </Text>
-  </Pressable>
-</ScrollView>
-            </ScrollView>
-
-
-
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* Cabeçalho */}
+        <View style={styles.header}>
+          <Text style={styles.badge}>CHECKLIST</Text>
+          <Text style={styles.title}>Mochila de Emergência</Text>
+          <Text style={styles.subtitle}>
+            Itens prioritários para separar rapidamente e levar com você.
+          </Text>
         </View>
-    )
+
+        {/* Card: Documentos */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>📄 Documentos</Text>
+          <Text style={styles.cardItem}>RG e CPF</Text>
+          <Text style={styles.cardItem}>Certidão de nascimento ou casamento</Text>
+          <Text style={styles.cardItem}>Cartão do SUS e convênio</Text>
+          <Text style={styles.cardItem}>Cartões bancários e dinheiro</Text>
+          <Text style={styles.cardItem}>Documentos do veículo</Text>
+          <Text style={styles.cardItem}>Comprovante de Residência </Text>
+          <Text style={styles.highlightTip}>
+            💡 Guarde tudo em saco plástico vedado ou pasta impermeável.
+          </Text>
+        </View>
+
+        {/* Card: Roupas */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>👕 Roupas</Text>
+          <Text style={styles.cardItem}>Troca de roupas secas</Text>
+          <Text style={styles.cardItem}>Casaco impermeável / agasalho</Text>
+          <Text style={styles.cardItem}>Roupas íntimas e meias</Text>
+          <Text style={styles.cardItem}>Toalha de rosto ou banho</Text>
+          <Text style={styles.cardItem}>Calçado fechado ou botas de borracha</Text>
+        </View>
+
+        {/* Card: Alimentos */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>🍞 Alimentos e Água</Text>
+          <Text style={styles.cardItem}>Garrafas de água potável</Text>
+          <Text style={styles.cardItem}>Barras de cereal e biscoitos</Text>
+          <Text style={styles.cardItem}>Comidas enlatadas e fáceis de abrir</Text>
+          <Text style={styles.cardItem}>Leite longa vida</Text>
+          <Text style={styles.cardItem}>Abridor de latas</Text>
+        </View>
+
+        {/* Card: Medicamentos */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>💊 Saúde e Higiene</Text>
+          <Text style={styles.cardItem}>Remédios de uso contínuo</Text>
+          <Text style={styles.cardItem}>Kit de primeiros socorros</Text>
+          <Text style={styles.cardItem}>Máscaras e álcool em gel</Text>
+          <Text style={styles.cardItem}>Papel higiênico e lenços umedecidos</Text>
+        </View>
+
+        {/* Card: Equipamentos */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>🔦 Equipamentos Importantes</Text>
+          <Text style={styles.cardItem}>Lanterna e pilhas extras</Text>
+          <Text style={styles.cardItem}>Carregador de celular e Power Bank</Text>
+          <Text style={styles.cardItem}>Rádio portátil a pilha</Text>
+          <Text style={styles.cardItem}>Apito para sinalização de resgate</Text>
+        </View>
+
+        {/* Card: Animais */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>🐶 Se Houver Animais</Text>
+          <Text style={styles.cardItem}>Ração e água potável</Text>
+          <Text style={styles.cardItem}>Coleira, guia e identificação</Text>
+          <Text style={styles.cardItem}>Caixa ou bolsa de transporte</Text>
+          <Text style={styles.cardItem}>Medicamentos do pet</Text>
+        </View>
+
+        {/* Botão de Voltar para a Central */}
+        <Pressable
+          onPress={() => router.back()}
+          style={({ pressed }) => [
+            styles.secondaryButton,
+            pressed && styles.buttonPressed
+          ]}
+        >
+          <Text style={styles.secondaryButtonText}>← Voltar para a Central</Text>
+        </Pressable>
+      </ScrollView>
+    </View>
+  )
 }
 
+interface Styles {
+  container: ViewStyle
+  glowTop: ViewStyle
+  scrollContent: ViewStyle
+  header: ViewStyle
+  badge: TextStyle
+  title: TextStyle
+  subtitle: TextStyle
+  card: ViewStyle
+  cardTitle: TextStyle
+  cardItem: TextStyle
+  highlightTip: TextStyle
+  secondaryButton: ViewStyle
+  secondaryButtonText: TextStyle
+  buttonPressed: ViewStyle
+}
 
-
-
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
-    backgroundColor: "#030712", 
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 24, // Ajustado conforme base da sugestão
-    paddingVertical: 20,
+    position: 'relative'
   },
   glowTop: {
-    position: "absolute",
-    backgroundColor: "rgba(132, 204, 22, 0.12)", 
+    position: 'absolute',
+    backgroundColor: 'rgba(53, 230, 198, 0.12)'
   },
-  glowBottom: {
-    position: "absolute",
-    backgroundColor: "rgba(30, 41, 59, 0.5)", 
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingTop: 60,
+    paddingBottom: 40,
+    maxWidth: 500,
+    alignSelf: 'center',
+    width: '100%'
   },
-  mainContent: {
-    flex: 1,
-    width: "100%",
-    maxWidth: 500, // Expandido para tablets (Sugestão 8)
-    justifyContent: "center",
+  header: {
+    alignItems: 'center',
+    marginBottom: 24
   },
-  brandContainer: {
-    alignItems: "center",
+  badge: {
+    color: '#35e6c6',
+    backgroundColor: 'rgba(53, 230, 198, 0.15)',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 20,
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 1,
+    marginBottom: 10
   },
-  logoWrapper: {
-    borderRadius: 32,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.15)",
-    marginBottom: 32,
-  },
-  logo: {},
   title: {
-    fontWeight: "900",
-    color: "#FFFFFF",
-    letterSpacing: -1.5,
-    marginBottom: 16,
-    textAlign: "center",
-  },
-  titleAccent: {
-    color: "#35e6c6", 
+    color: '#FFFFFF',
+    fontSize: 28,
+    fontWeight: '900',
+    textAlign: 'center'
   },
   subtitle: {
-    color: "#9CA3AF", 
-    textAlign: "center",
-    maxWidth: 340, // Limitado para não quebrar feio (Sugestão 5)
-    paddingHorizontal: 12,
+    color: '#9CA3AF',
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 6
   },
-  actionGroup: {
-    width: "100%",
-    gap: 16,
-  },
-  btnPrimaryContainer: {
-    width: "100%",
-    borderRadius: 20,
-    overflow: "hidden",
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.3,
-    shadowRadius: 20,
-    elevation: 8,
-  },
-  btnGradient: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  btnPrimaryText: {
-    color: "#061500",
-    fontWeight: "700",
-    letterSpacing: -0.3,
-  },
-  btnSecondary: {
-    width: "100%",
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "transparent",
+  card: {
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.1)",
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 16,
+    alignItems: 'center',
+    gap: 6
   },
-  btnSecondaryText: {
-    color: "#E5E7EB",
-    fontWeight: "600",
+  cardTitle: {
+    color: '#35e6c6',
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 6,
+    textAlign: 'center'
   },
-  btnPressed: {
-    transform: [{ scale: 0.96 }],
-    opacity: 0.85,
+  cardItem: {
+    color: '#E5E7EB',
+    fontSize: 15,
+    lineHeight: 22,
+    textAlign: 'center'
   },
-  footerContainer: {
-    alignItems: "center",
-    width: "100%",
-    gap: 16,
-    marginTop: 10,
+  highlightTip: {
+    color: '#9CA3AF',
+    fontSize: 13,
+    fontStyle: 'italic',
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.06)',
+    textAlign: 'center',
+    width: '100%'
   },
-  footerLine: {
-    width: 40,
-    height: 2,
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderRadius: 1,
+  secondaryButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.15)',
+    width: '100%',
+    height: 48,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 8
   },
-  footerText: {
-    color: "#4B5563",
-    fontSize: 12,
-    fontWeight: "600",
-    letterSpacing: 1,
-    textTransform: "uppercase",
+  secondaryButtonText: {
+    color: '#FFFFFF',
+    fontWeight: '700',
+    fontSize: 15
   },
-});
+  buttonPressed: {
+    opacity: 0.8,
+    transform: [{ scale: 0.98 }]
+  }
+})

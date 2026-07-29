@@ -9,7 +9,6 @@ import { colors } from '@/constants/theme'
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header'
 import { Screen } from '@/components/Screen'
-
 const labels={OPEN:'Aberto',IN_PROGRESS:'Em atendimento',RESOLVED:'Concluído',CANCELED:'Cancelado',LOW:'Baixa',MEDIUM:'Média',HIGH:'Alta',CRITICAL:'Crítica'} as Record<string,string>
 export default function Home(){
  const {user,signOut}=useAuth(); const [items,setItems]=useState<Pedido[]>([]); const [loading,setLoading]=useState(false)
