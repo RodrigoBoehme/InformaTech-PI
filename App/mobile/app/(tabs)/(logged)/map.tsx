@@ -186,21 +186,53 @@ export default function MapScreen() {
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>html,body,#map{height:100%;margin:0}.hint{position:absolute;top:12px;left:12px;right:12px;z-index:999;background:#111827;color:#fff;padding:10px;border-radius:10px;text-align:center;font-family:Arial;display:none}</style>
-</head><body><div id="map"></div><div id="hint" class="hint">Toque para posicionar ou clique e arraste para definir o raio</div><script>
+</head><body>
+<div id="map"></div><div id="hint" class="hint">Toque para posicionar ou clique e arraste para definir o raio</div>
+<script>
+
 const requests=${JSON.stringify(requests)};
 const zones=${JSON.stringify(zones)};
-let drawing=false, center=null, preview=null, defaultRadius=100;
+
+let drawing=false, center=null, preview=null, defaultRadius=200;
+
 const color=l=>l==='CRITICO'?'#b91c1c':l==='ALTO'?'#f97316':l==='MODERADO'?'#eab308':'#16a34a';
+
 const map=L.map('map').setView(requests.length?[Number(requests[0].latitude),Number(requests[0].longitude)]:[-29.7604,-51.1472],12);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
+
 requests.forEach(r=>L.marker([Number(r.latitude),Number(r.longitude)]).addTo(map).bindPopup('<b>'+r.title+'</b><br>Categoria: '+r.category+'<br>Prioridade: '+r.priority));
-zones.filter(z=>z.active!==false).forEach(z=>{const c=L.circle([Number(z.latitude),Number(z.longitude)],{radius:Number(z.radiusMeters),color:color(z.floodLevel),fillColor:color(z.floodLevel),fillOpacity:.28,weight:3}).addTo(map).bindPopup('<b>'+z.name+'</b><br>Nível de inundação: '+z.floodLevel+'<br>Nível do rio: '+Number(z.riverLevelMeters||0).toFixed(2)+' m<br>Raio: '+Math.round(Number(z.radiusMeters))+' m');c.on('click',()=>window.ReactNativeWebView.postMessage(JSON.stringify({type:'ZONE_SELECTED',id:z.id})))})
-function receive(e){try{const d=JSON.parse(e.data);if(d.type==='START_DRAW'){drawing=true;defaultRadius=Number(d.radiusMeters)||100;document.getElementById('hint').style.display='block';map.dragging.disable()}if(d.type==='CANCEL_DRAW'){drawing=false;center=null;document.getElementById('hint').style.display='none';map.dragging.enable();if(preview){map.removeLayer(preview);preview=null}}}catch{}}
+
+zones.filter(z=>z.active!==false).forEach(z=>{
+const c=L.circle(
+[Number(z.latitude),
+Number(z.longitude)],
+{radius:Number(z.radiusMeters)
+,color:color(z.floodLevel),
+fillColor:color(z.floodLevel),
+fillOpacity:.28,weight:3}).addTo(map).bindPopup('<b>'+z.name+'</b><br>Nível de inundação: '+z.floodLevel+'<br>Nível do rio: '+Number(z.riverLevelMeters||0).toFixed(2)+' m<br>Raio: '+Math.round(Number(z.radiusMeters))+' m');c.on('click',()=>window.ReactNativeWebView.postMessage(JSON.stringify({type:'ZONE_SELECTED',id:z.id})))})
+function receive(e){
+try{const d=JSON.parse(e.data);
+if(d.type==='START_DRAW'){
+drawing=true;
+defaultRadius=Number(d.radiusMeters)||100;document.getElementById('hint').style.display='block';
+map.dragging.disable()
+}
+if(d.type==='CANCEL_DRAW'){
+drawing=false;center=null;document.getElementById('hint').style.display='none';map.dragging.enable();if(preview){
+map.removeLayer(preview);preview=null}}}catch{}}
 document.addEventListener('message',receive);window.addEventListener('message',receive);
-map.on('mousedown',e=>{if(!drawing)return;center=e.latlng;if(preview)map.removeLayer(preview);preview=L.circle(center,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map)});
+map.on('mousedown',e=>{if(!drawing)return;center=e.latlng;if(preview)map.removeLayer(preview);
+preview=L.circle(center,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map)});
 map.on('mousemove',e=>{if(!drawing||!center||!preview)return;preview.setRadius(Math.max(10,map.distance(center,e.latlng)))});
-map.on('mouseup',e=>{if(!drawing||!center)return;const radius=Math.max(10,map.distance(center,e.latlng));drawing=false;map.dragging.enable();document.getElementById('hint').style.display='none';window.ReactNativeWebView.postMessage(JSON.stringify({type:'CIRCLE_DRAWN',latitude:center.lat,longitude:center.lng,radiusMeters:radius}));center=null});
-map.on('click',e=>{if(!drawing||center)return;if(preview)map.removeLayer(preview);preview=L.circle(e.latlng,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map);drawing=false;map.dragging.enable();document.getElementById('hint').style.display='none';window.ReactNativeWebView.postMessage(JSON.stringify({type:'POINT_SELECTED',latitude:e.latlng.lat,longitude:e.latlng.lng,radiusMeters:defaultRadius}))});
+map.on('mouseup',e=>{
+if(!drawing||!center)return;const radius=Math.max(10,map.distance(center,e.latlng));drawing=false;map.dragging.enable();document.getElementById('hint').style.display='none';window.ReactNativeWebView.postMessage(JSON.stringify({type:'CIRCLE_DRAWN',latitude:center.lat,longitude:center.lng,radiusMeters:radius}));center=null});
+map.on('click',e=>{
+if(!drawing||center)return;if(preview)map.removeLayer(preview);
+preview=L.circle(e.latlng,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map);
+drawing=false;map.dragging.enable();document.getElementById('hint').style.display='none';window.ReactNativeWebView.postMessage(JSON.stringify({type:'POINT_SELECTED',latitude:e.latlng.lat,longitude:e.latlng.lng,radiusMeters:defaultRadius}))});
+
+
 </script></body></html>`, [requests, zones])
 
   return (
