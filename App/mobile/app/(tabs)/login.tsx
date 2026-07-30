@@ -42,7 +42,7 @@ export default function Login() {
       
       }]}>
         
-        <Background1/>
+        <Background1 width={width} height={height}/>
 
 
       <Text style={{ fontSize: 32, fontWeight: '800', color: colors.card }}>Informa<Text style={{color:colors.primary}}>Tech</Text></Text>

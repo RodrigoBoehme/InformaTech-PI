@@ -45,7 +45,7 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center', // Centraliza os itens verticalmente
     justifyContent: 'space-between', // Joga o título para a esquerda e o botão para a direita
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     paddingTop: 1, // Espaço para não ficar atrás da barra de status do celular
     paddingBottom: 15,
   },
