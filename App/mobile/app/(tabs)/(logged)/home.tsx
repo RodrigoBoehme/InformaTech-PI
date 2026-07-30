@@ -10,9 +10,11 @@ import { Button } from '@/components/Button'
 import { Header } from '@/components/Header'
 import { Screen } from '@/components/Screen'
 import Background1 from '@/components/Background'
+import { useWindowDimensions } from 'react-native'
 
 const labels={OPEN:'Aberto',IN_PROGRESS:'Em atendimento',RESOLVED:'Concluído',CANCELED:'Cancelado',LOW:'Baixa',MEDIUM:'Média',HIGH:'Alta',CRITICAL:'Crítica'} as Record<string,string>
 export default function Home(){
+const {width, height}=useWindowDimensions()
  const {user,signOut}=useAuth(); const [items,setItems]=useState<Pedido[]>([]); const [loading,setLoading]=useState(false)
  const load=useCallback(async()=>{setLoading(true);try{setItems((await api.get('/pedidos')).data)}catch{Alert.alert('Erro','Não foi possível carregar os pedidos.')}finally{setLoading(false)}},[])
  useFocusEffect(useCallback(()=>{load()},[load]))
@@ -20,12 +22,14 @@ export default function Home(){
  async function aceitar(id:string){await api.patch(`/pedidos/${id}/aceitar`);load()}
  return <Screen scroll={false}>
 
-    <Background1/>
-  <Header title="InformaTech" action={<Pressable onPress={sair}><Ionicons name="log-out-outline" size={25} color={colors.card}/></Pressable>}/>
+ <Background1 width={width} height={height} />
+  <Header/>
   <Text style={s.welcome}>Olá, {user?.name}. Como podemos ajudar?</Text>
+  
   <View style={s.actions}>
  
    <Pressable style={s.action} onPress={()=>router.replace('/centralDeApoio')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Central de Apoio</Text></Pressable>
+   <Pressable style={s.action} onPress={()=>router.replace('/new-request')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Novo Pedido</Text></Pressable>
 
   </View>
   <Text style={s.section}>Pedidos recentes</Text>

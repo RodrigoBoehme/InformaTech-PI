@@ -190,7 +190,7 @@ export default function MapScreen() {
 const requests=${JSON.stringify(requests)};
 const zones=${JSON.stringify(zones)};
 let drawing=false, center=null, preview=null, defaultRadius=100;
-const color=l=>l==='CRITICO'?'#b91c1c':l==='ALTO'?'#f97316':l==='MODERADO'?'#eab308':'#16a34a';
+const color=l=>l==='CRITICO'?'#000000':l==='ALTO'?'#f91616':l==='MODERADO'?'#eab308':'#16a34a';
 const map=L.map('map').setView(requests.length?[Number(requests[0].latitude),Number(requests[0].longitude)]:[-29.7604,-51.1472],12);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 requests.forEach(r=>L.marker([Number(r.latitude),Number(r.longitude)]).addTo(map).bindPopup('<b>'+r.title+'</b><br>Categoria: '+r.category+'<br>Prioridade: '+r.priority));

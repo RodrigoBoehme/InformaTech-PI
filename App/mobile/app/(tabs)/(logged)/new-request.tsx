@@ -22,7 +22,7 @@ export default function NewRequest(){
     }    
     catch(e:any){Alert.alert('Erro',e?.response?.data?.message||'Não foi possível salvar o pedido.')}finally{setLoading(false)}}
  return <Screen>
-    <Header title="Novo pedido" back/>
+    <Header title="Novo pedido" />
         <Text style={{color:'#C8D5E3'}}>
         Descreva claramente a necessidade para facilitar o atendimento.
         </Text>

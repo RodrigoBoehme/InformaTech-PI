@@ -5,6 +5,7 @@ import { Button } from '@/components/Button'
 import { colors } from '@/constants/theme'
 import { StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native'
+import Background1 from '@/components/Background'
 
 
 export default function termos(){
@@ -12,9 +13,7 @@ export default function termos(){
 
     return(
         <View style={[{ flex: 1, padding: 24, justifyContent: 'center', gap: 14, backgroundColor: colors.background ,  },{width:width,height:height}]}>
-            <View style={[styles.glowTop, { top: -height * 0.4, right: -width * 0.8, width: width * 1.4, height: width * 1.3, borderRadius: (width * 1) / 2 }]} />
-            <View style={[styles.glowBottom, { bottom: -height * 0.4, left: -width * 0.8, width: width * 1.4, height: width * 1.2, borderRadius: (width * 1) / 2 }]} />
-            <View style={[styles.glowBottom, { top: -height * 0.4, left: -width * 0.9, width: width * 1.44, height: width * 1.1, borderRadius: (width * 1) / 2 }]} />
+          <Background1 height={height} width={width}/>
             <ScrollView>
             <Text style={{color:"#fff",fontSize:20,marginTop:20,marginLeft:10}}>Termos de uso</Text>
             <Text style={{color:"#fff", textAlign:"justify",marginBottom:15,marginTop:10,fontSize:9}}>Este documento estabelece os Termos de Uso da plataforma digital InformaTech, desenvolvida com o objetivo de mapear áreas de risco de alagamento no município de São Leopoldo, identificar locais seguros e disponibilizar informações que auxiliem a população e os órgãos competentes em situações de emergência e calamidade pública.
