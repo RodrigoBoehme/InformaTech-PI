@@ -21,8 +21,8 @@ export default function NewRequest(){
         setLoading(true);await api.post('/pedidos',form);router.replace('/home')
     }    
     catch(e:any){Alert.alert('Erro',e?.response?.data?.message||'Não foi possível salvar o pedido.')}finally{setLoading(false)}}
- return <Screen>
-    <Header title="Novo pedido" />
+ return <Screen scroll={false}>
+    <Header title="Novo pedido" title2ndPart='' />
         <Text style={{color:'#C8D5E3'}}>
         Descreva claramente a necessidade para facilitar o atendimento.
         </Text>

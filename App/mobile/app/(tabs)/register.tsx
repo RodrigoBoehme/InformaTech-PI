@@ -157,7 +157,7 @@ export default function Register() {
         backgroundColor: colors.background
       }}
     >
-      <Background1/>
+      <Background1 width={width} height={height}/>
       <Text
         style={{
           fontSize: 28,

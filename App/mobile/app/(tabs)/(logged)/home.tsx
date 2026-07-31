@@ -30,8 +30,7 @@ const {user,signOut}=useAuth(); const [items,setItems]=useState<Pedido[]>([]); c
  
    <Pressable style={s.action} onPress={()=>router.replace('/centralDeApoio')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Central de Apoio</Text></Pressable>
    <Pressable style={s.action} onPress={()=>router.replace('/new-request')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Novo Pedido</Text></Pressable>
-   <Pressable style={s.action} onPress={()=>router.replace('/new-request')}><Ionicons name="alert-circle" size={25} color={colors.primary}/><Text style={s.actionText}>Novo Pedido</Text></Pressable>
-
+   
   </View>
   <Text style={s.section}>Pedidos recentes</Text>
   <FlatList 
