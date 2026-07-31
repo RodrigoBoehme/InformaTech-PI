@@ -162,11 +162,14 @@ export default function Register() {
         style={{
           fontSize: 28,
           fontWeight: '800',
-          color: colors.primary
+          color: "#ffff",
+
         }}
       >
-        Criar conta
+        Criar <Text style={{color:colors.primary}}>Conta</Text>
+        
       </Text>
+      
 
       <Input
         placeholder="Nome"
