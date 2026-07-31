@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Alert, Pressable, Text, View } from 'react-native'
+import { Alert, Pressable, Text, View,useWindowDimensions } from 'react-native'
 import { router } from 'expo-router'
 
 import { Button } from '@/components/Button'
@@ -7,6 +7,7 @@ import { Input } from '@/components/Input'
 import { PasswordInput } from '@/components/PasswordInput'
 import { useAuth } from '@/contexts/AuthContext'
 import { colors } from '@/constants/theme'
+import Background1 from '@/components/Background'
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const phoneRegex = /^\(\d{2}\)\s\d{5}-\d{4}$/
@@ -144,6 +145,7 @@ export default function Register() {
       setLoading(false)
     }
   }
+  const {width,height}=useWindowDimensions()
 
   return (
     <View
@@ -155,6 +157,7 @@ export default function Register() {
         backgroundColor: colors.background
       }}
     >
+      <Background1/>
       <Text
         style={{
           fontSize: 28,
