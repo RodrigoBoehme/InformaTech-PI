@@ -15,7 +15,7 @@ import { useWindowDimensions } from 'react-native'
 const labels={OPEN:'Aberto',IN_PROGRESS:'Em atendimento',RESOLVED:'Concluído',CANCELED:'Cancelado',LOW:'Baixa',MEDIUM:'Média',HIGH:'Alta',CRITICAL:'Crítica'} as Record<string,string>
 export default function Home(){
 const {width, height}=useWindowDimensions()
- const {user,signOut}=useAuth(); const [items,setItems]=useState<Pedido[]>([]); const [loading,setLoading]=useState(false)
+const {user,signOut}=useAuth(); const [items,setItems]=useState<Pedido[]>([]); const [loading,setLoading]=useState(false)
  const load=useCallback(async()=>{setLoading(true);try{setItems((await api.get('/pedidos')).data)}catch{Alert.alert('Erro','Não foi possível carregar os pedidos.')}finally{setLoading(false)}},[])
  useFocusEffect(useCallback(()=>{load()},[load]))
  async function sair(){await signOut();router.replace('../login')}
@@ -23,7 +23,7 @@ const {width, height}=useWindowDimensions()
  return <Screen scroll={false}>
 
  <Background1 width={width} height={height} />
-  <Header/>
+  <Header onLogout={sair}/>
   <Text style={s.welcome}>Olá, {user?.name}. Como podemos ajudar?</Text>
   
   <View style={s.actions}>

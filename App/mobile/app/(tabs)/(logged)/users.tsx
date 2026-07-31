@@ -83,9 +83,10 @@ export default function Users() {
 
       
       {/* Cabeçalho */}
-      <Header title="Usuários" title2ndPart='' />
 
       <Background1 width={width} height={height}/>
+      <Header title="Usuá" title2ndPart='rios'/>
+
       {/* Lista de Usuários */}
       <FlatList
         data={items}

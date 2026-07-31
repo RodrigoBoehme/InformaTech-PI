@@ -68,7 +68,7 @@ export default function Helps() {
       <Background1 width={width} height={height} />
 
       {/* Header com o botão de voltar padrão */}
-      <Header title="Ofertas de Ajuda" title2ndPart=''  />
+      <Header title="Ofertas d" title2ndPart='e Ajuda'  />
 
       <FlatList
         data={items}

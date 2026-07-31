@@ -5,7 +5,7 @@ import { colors } from '@/constants/theme';
 
 interface HeaderProps {
   title?: string;
-  onLogout?: () => void;
+  onLogout?: () => Promise<void>;
   action?: React.ReactNode;
   title2ndPart?:string;
 }
@@ -46,7 +46,7 @@ const s = StyleSheet.create({
     alignItems: 'center', // Centraliza os itens verticalmente
     justifyContent: 'space-between', // Joga o título para a esquerda e o botão para a direita
     paddingHorizontal: 30,
-    paddingTop: 1, // Espaço para não ficar atrás da barra de status do celular
+    paddingTop: 10, // Espaço para não ficar atrás da barra de status do celular
     paddingBottom: 15,
   },
   title: {
