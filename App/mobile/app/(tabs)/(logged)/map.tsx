@@ -20,7 +20,7 @@ const emptyForm = {
   name: '',
   description: '',
   floodLevel: 'ALTO' as NivelInundacao,
-  latitude: 0,
+  latitude: 0,//Alterar no zod para ser uma string com todos os pontos
   longitude: 0,
   radiusMeters: '100',
   riverLevelMeters: '0',
@@ -55,6 +55,8 @@ export default function MapScreen() {
   function send(data: object) {
     web.current?.postMessage(JSON.stringify(data))
   }
+
+  
 
   function startDrawing() {
     setSelected(null)
@@ -195,42 +197,83 @@ const zones=${JSON.stringify(zones)};
 
 let drawing=false, center=null, preview=null, defaultRadius=200;
 
-const color=l=>l==='CRITICO'?'#b91c1c':l==='ALTO'?'#f97316':l==='MODERADO'?'#eab308':'#16a34a';
+const color=l=>l==='CRITICO'?'#1a1919':l==='ALTO'?'#da3232':l==='MODERADO'?'#eab308':'#16a34a';
 
 const map=L.map('map').setView(requests.length?[Number(requests[0].latitude),Number(requests[0].longitude)]:[-29.7604,-51.1472],12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 
-requests.forEach(r=>L.marker([Number(r.latitude),Number(r.longitude)]).addTo(map).bindPopup('<b>'+r.title+'</b><br>Categoria: '+r.category+'<br>Prioridade: '+r.priority));
+  requests.forEach(r=>L.marker([Number(r.latitude),Number(r.longitude)]).addTo(map).bindPopup('<b>'+r.title+'</b><br>Categoria: '+r.category+'<br>Prioridade: '+r.priority));
 
-zones.filter(z=>z.active!==false).forEach(z=>{
-const c=L.circle(
-[Number(z.latitude),
-Number(z.longitude)],
-{radius:Number(z.radiusMeters)
-,color:color(z.floodLevel),
-fillColor:color(z.floodLevel),
-fillOpacity:.28,weight:3}).addTo(map).bindPopup('<b>'+z.name+'</b><br>Nível de inundação: '+z.floodLevel+'<br>Nível do rio: '+Number(z.riverLevelMeters||0).toFixed(2)+' m<br>Raio: '+Math.round(Number(z.radiusMeters))+' m');c.on('click',()=>window.ReactNativeWebView.postMessage(JSON.stringify({type:'ZONE_SELECTED',id:z.id})))})
-function receive(e){
-try{const d=JSON.parse(e.data);
-if(d.type==='START_DRAW'){
-drawing=true;
-defaultRadius=Number(d.radiusMeters)||100;document.getElementById('hint').style.display='block';
-map.dragging.disable()
-}
-if(d.type==='CANCEL_DRAW'){
-drawing=false;center=null;document.getElementById('hint').style.display='none';map.dragging.enable();if(preview){
-map.removeLayer(preview);preview=null}}}catch{}}
-document.addEventListener('message',receive);window.addEventListener('message',receive);
-map.on('mousedown',e=>{if(!drawing)return;center=e.latlng;if(preview)map.removeLayer(preview);
-preview=L.circle(center,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map)});
-map.on('mousemove',e=>{if(!drawing||!center||!preview)return;preview.setRadius(Math.max(10,map.distance(center,e.latlng)))});
-map.on('mouseup',e=>{
-if(!drawing||!center)return;const radius=Math.max(10,map.distance(center,e.latlng));drawing=false;map.dragging.enable();document.getElementById('hint').style.display='none';window.ReactNativeWebView.postMessage(JSON.stringify({type:'CIRCLE_DRAWN',latitude:center.lat,longitude:center.lng,radiusMeters:radius}));center=null});
-map.on('click',e=>{
-if(!drawing||center)return;if(preview)map.removeLayer(preview);
-preview=L.circle(e.latlng,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map);
-drawing=false;map.dragging.enable();document.getElementById('hint').style.display='none';window.ReactNativeWebView.postMessage(JSON.stringify({type:'POINT_SELECTED',latitude:e.latlng.lat,longitude:e.latlng.lng,radiusMeters:defaultRadius}))});
+  zones.filter(z=>z.active!==false).forEach(z=>{
+    const c=L.circle(
+      [
+      Number(z.latitude),
+      Number(z.longitude)
+      ],
+      {radius:Number(z.radiusMeters)
+      ,color:color(z.floodLevel),
+      fillColor:color(z.floodLevel),
+      fillOpacity:.28,weight:3}
+    ).addTo(map).bindPopup('<b>'+z.name+'</b><br>Nível de inundação: '+z.floodLevel+'<br>Nível do rio: '+Number(z.riverLevelMeters||0).toFixed(2)+' m<br>Raio: '+Math.round(Number(z.radiusMeters))+' m');c.on('click',()=>window.ReactNativeWebView.postMessage(JSON.stringify({type:'ZONE_SELECTED',id:z.id})))
+  })
+
+  function receive(e){
+    try{const d=JSON.parse(e.data);
+
+      if(d.type==='START_DRAW'){
+        drawing=true;
+        defaultRadius=Number(d.radiusMeters)||100;document.getElementById('hint').style.display='block';
+        map.dragging.disable()
+      }
+      if(d.type==='CANCEL_DRAW'){
+        drawing=false;center=null;document.getElementById('hint')
+        .style
+        .display='none';
+        map.dragging.enable();if(preview){
+          map.removeLayer(preview);preview=null
+        }
+      }
+    }catch{}
+  }
+
+  document.addEventListener('message',receive);
+  window.addEventListener('message',receive);
+  map.on('mousedown',e=>{if(!drawing)return;
+  center=e.latlng;
+  
+  if(preview)map.removeLayer(preview);
+  preview=L.circle(center,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map)});
+  
+  map.on('mousemove',e=>{if(!drawing||!center||!preview)return;
+
+  preview.setRadius(Math.max(10,map.distance(center,e.latlng)))});
+  
+  map.on('mouseup',e=>{
+
+    if(!drawing||!center)return;
+
+    const radius=Math.max(10,map.distance(center,e.latlng));
+
+    drawing=false;map.dragging.enable();document.getElementById('hint').style.display='none';
+
+    window.ReactNativeWebView.postMessage(JSON.stringify({type:'CIRCLE_DRAWN',latitude:center.lat,longitude:center.lng,radiusMeters:radius}));center=null});
+  
+  map.on('click',e=>{
+
+    if(!drawing||center)return;
+
+    if(preview)map.removeLayer(preview);
+
+  preview=L.circle(e.latlng,{radius:defaultRadius,color:'#2563eb',fillOpacity:.2}).addTo(map);
+
+  drawing=false;
+
+  map.dragging.enable();
+
+  document.getElementById('hint').style.display='none';
+
+  window.ReactNativeWebView.postMessage(JSON.stringify({type:'POINT_SELECTED',latitude:e.latlng.lat,longitude:e.latlng.lng,radiusMeters:defaultRadius}))});
 
 
 </script></body></html>`, [requests, zones])
@@ -270,7 +313,14 @@ drawing=false;map.dragging.enable();document.getElementById('hint').style.displa
         </View>
       )}
       {!isAdmin && <View style={{ padding: 10, backgroundColor: '#fff',paddingTop:30 }}><Text style={{ fontWeight: '800' }}>Mapa de pedidos e zonas de risco</Text><Text style={{ color: '#66778A' }}>As áreas coloridas indicam o nível estimado de inundação.</Text></View>}
-      <WebView ref={web} originWhitelist={['*']} source={{ html }} onMessage={onMessage} javaScriptEnabled domStorageEnabled />
+      <WebView 
+        ref={web} 
+        originWhitelist={['*']} 
+        source={{ html }} 
+        onMessage={onMessage} 
+        javaScriptEnabled 
+        domStorageEnabled 
+      />
     </View>
   )
 }

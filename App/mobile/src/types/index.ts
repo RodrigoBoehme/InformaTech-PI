@@ -8,7 +8,7 @@ export type ZonaRisco = {
   id: string
   name: string
   description?: string | null
-  latitude: number | string
+  latitude: number | string//Alterar para uma string com multiplas coordenadas
   longitude: number | string
   radiusMeters: number | string
   riverLevelMeters: number | string
