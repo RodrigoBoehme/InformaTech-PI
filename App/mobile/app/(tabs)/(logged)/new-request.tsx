@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { Alert, Text } from 'react-native'
+import { Alert, Text,useWindowDimensions } from 'react-native'
 import * as Location from 'expo-location'
 import { router } from 'expo-router'
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
-import { Header } from '@/components/Header'
 import { Screen } from '@/components/Screen'
 import { api } from '@/services/api'
 import { colors } from '@/constants/theme'
+import Background1 from '@/components/Background'
+
 export default function NewRequest(){
+const {width,height}=useWindowDimensions()
  const [form,setForm]=useState({title:'',description:'',category:'Resgate',priority:'HIGH',address:'',latitude:'',longitude:''}); 
  const [loading,setLoading]=useState(false)
  async function locate(){
@@ -21,9 +23,10 @@ export default function NewRequest(){
         setLoading(true);await api.post('/pedidos',form);router.replace('/home')
     }    
     catch(e:any){Alert.alert('Erro',e?.response?.data?.message||'Não foi possível salvar o pedido.')}finally{setLoading(false)}}
- return <Screen scroll={false}>
-    <Header title="Novo pedido" title2ndPart='' />
-        <Text style={{color:'#C8D5E3'}}>
+ return <Screen headr={{title:'Novo ',title2ndPart:"Pedido"}} scroll={false}>
+    {/* <Header title="Novo pedido" title2ndPart='' /> */}
+        <Background1 width={width} height={height} />
+        <Text style={{color:'#C8D5E3',textAlign:"center",marginTop:10}}>
         Descreva claramente a necessidade para facilitar o atendimento.
         </Text>
         <Input placeholder="Título" value={form.title} onChangeText={title=>setForm({...form,title})}/>

@@ -20,10 +20,10 @@ const {user,signOut}=useAuth(); const [items,setItems]=useState<Pedido[]>([]); c
  useFocusEffect(useCallback(()=>{load()},[load]))
  async function sair(){await signOut();router.replace('../login')}
  async function aceitar(id:string){await api.patch(`/pedidos/${id}/aceitar`);load()}
- return <Screen scroll={false}>
+ return <Screen headr={{title:"Informa",title2ndPart:"Tech"}} scroll={false}>
 
  <Background1 width={width} height={height} />
-  <Header onLogout={sair}/>
+  {/* <Header onLogout={sair}/> */}
   <Text style={s.welcome}>Olá, {user?.name}. Como podemos ajudar?</Text>
   
   <View style={s.actions}>
@@ -56,7 +56,9 @@ const s=StyleSheet.create(
   {
     welcome:{
       color:'#C8D5E3',
-      fontSize:16
+      fontSize:17,
+      textAlign:"center",
+      marginTop:10
     },
     actions:{
       flexDirection:'row',

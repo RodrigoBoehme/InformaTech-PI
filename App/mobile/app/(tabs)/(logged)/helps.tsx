@@ -64,11 +64,11 @@ export default function Helps() {
   }
 
   return (
-    <Screen scroll={false}>
+    <Screen headr={{title:"Ofertas d",title2ndPart:"e ajuda"}} scroll={false}>
       <Background1 width={width} height={height} />
 
       {/* Header com o botão de voltar padrão */}
-      <Header title="Ofertas d" title2ndPart='e Ajuda'  />
+      {/* // <Header title="Ofertas d" title2ndPart='e Ajuda'  /> */}
 
       <FlatList
         data={items}

@@ -79,13 +79,13 @@ export default function Users() {
   }
 
   return (
-    <Screen scroll={false}>
+    <Screen headr={{title:"Usuá",title2ndPart:"rios"}} scroll={false}>
 
       
       {/* Cabeçalho */}
 
       <Background1 width={width} height={height}/>
-      <Header title="Usuá" title2ndPart='rios'/>
+      {/* <Header title="Usuá" title2ndPart='rios'/> */}
 
       {/* Lista de Usuários */}
       <FlatList

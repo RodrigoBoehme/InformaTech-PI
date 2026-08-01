@@ -45,11 +45,13 @@ export default function Profile() {
   }
 
   return (
-    <Screen style={s.screenContainer} scroll={false}>
+    <Screen 
+    headr={{title:"Meu",title2ndPart:" Perfil"}}
+    style={s.screenContainer} scroll={false}>
       <Background1 width={width} height={height}/>
 
       {/* Cabeçalho */}
-      <Header title="Meu " title2ndPart='Perfil'/>
+      {/* <Header title="Meu " title2ndPart='Perfil'/> */}
 
       <ScrollView 
         contentContainerStyle={s.scrollContent} 
