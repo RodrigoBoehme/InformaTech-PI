@@ -9,27 +9,17 @@ import {
 } from 'react-native'
 import { router } from 'expo-router'
 import { colors } from '@/constants/theme'
+import { Screen } from '@/components/Screen'
+import Background1 from '@/components/Background'
 
 export default function CentralEmergencia() {
   const { width, height } = useWindowDimensions()
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <Screen headr={{title:"Central",title2ndPart:"e Apoio"}} scroll={false}>
       {/* Luzes de fundo */}
-      <View
-        style={[
-          styles.glowTop,
-          {
-            top: -height * 0.3,
-            right: -width * 0.5,
-            width: width * 1.2,
-            height: width * 1.2,
-            borderRadius: (width * 1.2) / 2
-          }
-        ]}
-      />
-
-      <ScrollView
+      <Background1 width={width} height={height}/>
+            <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
@@ -111,7 +101,7 @@ export default function CentralEmergencia() {
 
 
       </ScrollView>
-    </View>
+    </Screen>
   )
 }
 
@@ -149,7 +139,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#FFFFFF',
-    fontSize: 28,
+    fontSize: 20,
     fontWeight: '900',
     textAlign: 'center'
   },
