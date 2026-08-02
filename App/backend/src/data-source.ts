@@ -6,6 +6,7 @@ import { HelpOffer } from './entities/HelpOffer'
 import { RescueRequest } from './entities/RescueRequest'
 import { User } from './entities/User'
 import { RiskZone } from './entities/RiskZone'
+import { RiskZoneV2 } from './entities/RiskZoneV2'
 
 /**
  * Conexão central com o MySQL usando TypeORM.
@@ -31,5 +32,5 @@ export const AppDataSource = new DataSource({
   // Exibe as consultas SQL apenas no ambiente de desenvolvimento.
   logging: env.nodeEnv === 'development',
 
-  entities: [User, RescueRequest, HelpOffer, RiskZone],
+  entities: [RiskZoneV2,RiskZone,RescueRequest,User,HelpOffer],
 })

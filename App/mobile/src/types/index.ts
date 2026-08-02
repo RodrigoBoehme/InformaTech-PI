@@ -16,3 +16,13 @@ export type ZonaRisco = {
   active: boolean
   createdBy?: string | null
 }
+export type ZonaRiscoV2 = {
+  id: string
+  name: string
+  description?: string | null
+  coords: string//Alterar para uma string com multiplas coordenadas
+  riverLevelMeters: number | string
+  floodLevel: NivelInundacao
+  active: boolean
+  createdBy?: string | null
+}

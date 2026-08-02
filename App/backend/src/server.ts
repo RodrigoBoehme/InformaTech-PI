@@ -14,6 +14,7 @@ import { helpRoutes } from './routes/help.routes'
 import { riskZoneRoutes } from './routes/risk-zone.routes'
 import { swaggerDocument } from './config/swagger'
 import { swaggerHtml } from './config/swagger-ui'
+import { riskZoneV2Routes } from './routes/risk-zone-v2.routes'
 
 const app = express()
 app.use(helmet({ crossOriginResourcePolicy: false, contentSecurityPolicy: false }))
@@ -29,6 +30,7 @@ app.use('/usuarios', userRoutes)
 app.use('/pedidos', requestRoutes)
 app.use('/ajudas', helpRoutes)
 app.use('/zonas-risco', riskZoneRoutes)
+app.use('/zonas-risco-v2', riskZoneV2Routes)
 app.use(errorHandler)
 
 async function startServer() {

@@ -122,6 +122,7 @@ export default function MapScreen() {
     }
   }
 
+
   function remove() {
     if (!selected) return
     Alert.alert('Excluir zona', 'Confirma a exclusão?', [
@@ -199,7 +200,7 @@ let drawing=false, center=null, preview=null, defaultRadius=200;
 
 const color=l=>l==='CRITICO'?'#1a1919':l==='ALTO'?'#da3232':l==='MODERADO'?'#eab308':'#16a34a';
 
-const map=L.map('map').setView(requests.length?[Number(requests[0].latitude),Number(requests[0].longitude)]:[-29.7604,-51.1472],12);
+const map=L.map('map').setView(requests.length?[Number(requests[0].latitude),Number(requests[0].longitude)]:[-29.7604,-51.1472],14);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 

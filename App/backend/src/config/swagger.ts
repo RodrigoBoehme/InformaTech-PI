@@ -36,6 +36,7 @@ A interface adicionará automaticamente o prefixo \`Bearer\` ao cabeçalho Autho
   tags: [
     { name: 'Status', description: 'Verificação de disponibilidade da API' },
     { name: 'Zonas de risco', description: 'Visualização e administração de zonas circulares de inundação' },
+    { name: 'Zonas de riscoV2', description: 'Visualização e administração de zonas circulares de inundação' },
     { name: 'Autenticação', description: 'Cadastro, login e perfil autenticado' },
     { name: 'Usuários', description: 'CRUD de usuários e administração de contas' },
     { name: 'Pedidos', description: 'CRUD e fluxo de atendimento dos pedidos' },
@@ -212,6 +213,18 @@ A interface adicionará automaticamente o prefixo \`Bearer\` ao cabeçalho Autho
       CriacaoZonaRisco: {
         type: 'object', required: ['name','latitude','longitude','radiusMeters','floodLevel'],
         properties: { name:{type:'string',minLength:3}, description:{type:'string'}, latitude:{type:'number'}, longitude:{type:'number'}, radiusMeters:{type:'number',minimum:10}, floodLevel:{ $ref:'#/components/schemas/NivelInundacao' }, active:{type:'boolean'} }
+      },
+      ZonaRiscoV2: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', format: 'uuid' }, name: { type: 'string', example: 'Área próxima ao arroio' },
+          description: { type: 'string', nullable: true }, coords: { type: 'string', example: -29.7604 },
+          floodLevel: { $ref: '#/components/schemas/NivelInundacao' }, active: { type: 'boolean', example: true }
+        }
+      },
+      CriacaoZonaRiscoV2: {
+        type: 'object', required: ['name','coords','floodLevel'],
+        properties: { name:{type:'string',minLength:3}, description:{type:'string'}, coords:{type:'string'}, floodLevel:{ $ref:'#/components/schemas/NivelInundacao' }, active:{type:'boolean'} }
       },
       Erro: {
         type: 'object',
@@ -411,6 +424,15 @@ A interface adicionará automaticamente o prefixo \`Bearer\` ao cabeçalho Autho
       get: { tags:['Zonas de risco'], summary:'Busca uma zona', security:[{bearerAuth:[]}], parameters:[{$ref:'#/components/parameters/IdParametro'}], responses:{'200':{description:'Zona encontrada'}} },
       put: { tags:['Zonas de risco'], summary:'Atualiza uma zona (somente ADMIN)', security:[{bearerAuth:[]}], parameters:[{$ref:'#/components/parameters/IdParametro'}], requestBody:{required:true,content:{'application/json':{schema:{$ref:'#/components/schemas/CriacaoZonaRisco'}}}}, responses:{'200':{description:'Zona atualizada'},'403':{$ref:'#/components/responses/Proibido'}} },
       delete: { tags:['Zonas de risco'], summary:'Exclui uma zona (somente ADMIN)', security:[{bearerAuth:[]}], parameters:[{$ref:'#/components/parameters/IdParametro'}], responses:{'204':{description:'Zona excluída'},'403':{$ref:'#/components/responses/Proibido'}} }
+    },
+    '/zonas-risco-v2': {
+      get: { tags:['Zonas de riscoV2'], summary:'Lista as zonas de risco', security:[{bearerAuth:[]}], responses:{'200':{description:'Lista de zonas'}} },
+      post: { tags:['Zonas de riscoV2'], summary:'Cria uma zona (somente ADMIN)', security:[{bearerAuth:[]}], requestBody:{required:true,content:{'application/json':{schema:{$ref:'#/components/schemas/CriacaoZonaRiscoV2'}}}}, responses:{'201':{description:'Zona criada'},'403':{$ref:'#/components/responses/Proibido'}} }
+    },
+    '/zonas-risco-v2/{id}': {
+      get: { tags:['Zonas de riscoV2'], summary:'Busca uma zona', security:[{bearerAuth:[]}], parameters:[{$ref:'#/components/parameters/IdParametro'}], responses:{'200':{description:'Zona encontrada'}} },
+      put: { tags:['Zonas de riscoV2'], summary:'Atualiza uma zona (somente ADMIN)', security:[{bearerAuth:[]}], parameters:[{$ref:'#/components/parameters/IdParametro'}], requestBody:{required:true,content:{'application/json':{schema:{$ref:'#/components/schemas/CriacaoZonaRiscoV2'}}}}, responses:{'200':{description:'Zona atualizada'},'403':{$ref:'#/components/responses/Proibido'}} },
+      delete: { tags:['Zonas de riscoV2'], summary:'Exclui uma zona (somente ADMIN)', security:[{bearerAuth:[]}], parameters:[{$ref:'#/components/parameters/IdParametro'}], responses:{'204':{description:'Zona excluída'},'403':{$ref:'#/components/responses/Proibido'}} }
     }
 
   }
