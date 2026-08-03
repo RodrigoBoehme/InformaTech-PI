@@ -18,7 +18,13 @@ const emptyForm = {
   riverLevelMeters: "0",
 };
 
-type RiskLevel = "BAIXO" | "MEDIO" | "ALTO" | "CRITICO";
+type RiskLevel = "BAIXO" | "MODERADO" | "ALTO" | "CRITICO";
+const levels: Array<{ label: string; value: NivelInundacao }> = [
+  { label: 'BAIXO', value: 'BAIXO' },
+  { label: 'MODERADO', value: 'MODERADO' },
+  { label: 'ALTO', value: 'ALTO' },
+  { label: 'CRÍTICO', value: 'CRITICO' },
+]
 
 export default function MapScreen() {
   const { user } = useAuth();
@@ -32,7 +38,6 @@ export default function MapScreen() {
   const web = useRef<WebView>(null);
   const [zoneMode, setZoneMode] = useState(false);
   const [selectedRisk, setSelectedRisk] = useState<RiskLevel>("ALTO");
-  const [zonesCoords,setZonesCoords]=useState([""])
 
   const load = useCallback(async () => {
     try {
@@ -175,10 +180,25 @@ export default function MapScreen() {
     if (data.type === "POLYGON_ERROR") {
       Alert.alert("Atenção", data.message);
     }
+
+    if (data.type === 'ZONE_SELECTED' && isAdmin) {
+        const zone = zones.find(item => item.id === data.id)
+        if (zone) {
+          setSelected(zone)
+          setForm({
+            name: zone.name,
+            description: zone.description || '',
+            floodLevel: zone.floodLevel,
+            coords: zone.coords,
+            riverLevelMeters: String(zone.riverLevelMeters ?? 0),
+          })
+        }
+      }
   }
 
   function handleRiskChange(risk: RiskLevel) {
     setSelectedRisk(risk);
+    form.floodLevel=risk
 
     sendToMap({
       type: "SET_RISK",
@@ -466,6 +486,8 @@ export default function MapScreen() {
 
   return (
     <View style={{ flex: 1 }}>
+      
+      {isAdmin && (
       <View
         style={{
           maxHeight: 400,//alterar pra sla, 400 dps
@@ -561,13 +583,26 @@ export default function MapScreen() {
                     Excluir
                   </Text>
                 </Pressable>
-              )}
+              )}{selected &&(
+                <Pressable
+                 onPress={resetForm}
+                 style={{
+                    padding: 11,
+                    borderRadius: 10,
+                    backgroundColor: "#dee042",
+                  }}
+                >
+                  <Text style={{ color: "#fff", fontWeight: "800" }}>Limpar</Text>
+                </Pressable>
+              )
+
+              }
             </View>
             <Text style={{ fontSize: 16, fontWeight: "700" }}>
               Criar zona de risco
             </Text>
 
-            <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
+            {/* <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
               {(["BAIXO", "MEDIO", "ALTO", "CRITICO"] as RiskLevel[]).map(
                 (risk) => (
                   <Pressable
@@ -590,9 +625,17 @@ export default function MapScreen() {
                       {risk}
                     </Text>
                   </Pressable>
+                  
                 ),
               )}
-            </View>
+            </View> */}
+                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+                          {levels.map(level => (
+                            <Pressable key={level.value} onPress={() => setForm(current => ({ ...current, floodLevel: level.value }))} style={{ padding: 9, borderRadius: 18, backgroundColor: form.floodLevel === level.value ? '#111827' : '#e5e7eb' }}>
+                              <Text style={{ color: form.floodLevel === level.value ? '#fff' : '#111827', fontWeight: '700' }}>{level.label}</Text>
+                            </Pressable>
+                          ))}
+                        </View>
 
             <Pressable
               onPress={handleCreateZone}
@@ -643,7 +686,7 @@ export default function MapScreen() {
             )}
           </ScrollView>
         </View>
-      </View>
+      </View>)}
 
       <WebView
         ref={web}
