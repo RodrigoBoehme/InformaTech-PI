@@ -4,16 +4,8 @@ import { colors } from '@/constants/theme'
 
 import { Header } from './Header'
 
-
-interface HeaderProps {
-    title?: string;
-    onLogout?: () => Promise<void>;
-    action?: React.ReactNode;
-    title2ndPart?:string;
-  }
-
 export function Screen( {
-    headr={title:"",title2ndPart:""},
+    headr={title:"",title2ndPart:"" },
     children,
     scroll = true,
     style,

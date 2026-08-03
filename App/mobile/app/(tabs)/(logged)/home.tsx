@@ -33,7 +33,7 @@ const labels: Record<string, string> = {
 
 export default function Home() {
   const { width, height } = useWindowDimensions()
-  const { user } = useAuth()
+  const { user ,signOut} = useAuth()
 
   const [items, setItems] = useState<Pedido[]>([])
   const [loading, setLoading] = useState(false)
@@ -65,9 +65,8 @@ export default function Home() {
       Alert.alert('Erro', 'Não foi possível aceitar o atendimento.')
     }
   }
-
   return (
-    <Screen headr={{ title: 'Informa', title2ndPart: 'Tech' }} scroll={false}>
+    <Screen headr={{ title: 'Informa', title2ndPart: 'Tech', onLogout:(signOut) }} scroll={false}>
       <Background1 width={width} height={height} />
 
       <View style={s.container}>

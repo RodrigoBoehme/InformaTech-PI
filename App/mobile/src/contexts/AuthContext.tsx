@@ -1,5 +1,6 @@
 import * as SecureStore from 'expo-secure-store'
 import axios from 'axios'
+import { router } from 'expo-router'
 import {
   createContext,
   ReactNode,
@@ -198,6 +199,7 @@ export function AuthProvider({
       await SecureStore.deleteItemAsync(TOKEN_KEY)
     } finally {
       setUser(null)
+      router.replace("/login")
     }
   }
 

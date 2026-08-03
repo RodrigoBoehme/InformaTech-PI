@@ -2,6 +2,8 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { colors } from '@/constants/theme';
+import { useAuth } from '@/contexts/AuthContext';
+import { useState } from 'react';
 
 interface HeaderProps {
   title?: string;
@@ -11,12 +13,23 @@ interface HeaderProps {
 }
 
 export function Header({ title = 'Informa',title2ndPart="Tech" ,onLogout, action }: HeaderProps) {
+  const {user,signOut}=useAuth()
+    const [loading, setLoading] = useState(false)
   // Função padrão de logout caso nenhuma seja passada via prop
   const handleLogout = () => {
     if (onLogout) {
       onLogout()
+
     } else {
-      router.replace('/') // Redireciona para a tela inicial/login
+      try{
+      setLoading(true)
+      signOut()
+
+
+      }finally{
+        setLoading(false)
+        router.replace(user?'/register':"/login")
+      }
     }
   }
 
