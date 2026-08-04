@@ -64,7 +64,7 @@ Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731
 [Documentação do Projeto](https://docs.google.com/document/d/1l-mksFd1MLT9Tp9tfvOTlnNB7cVMcfGWuMv-su7gLb0/edit?usp=sharing)
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=7ED957&height=100&section=footer"/>
-
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&color=7ED957"/>
 
 # InformaTech Full Stack
 
@@ -101,3 +101,5 @@ No backend, revise os campos `ADMIN_*` do arquivo `.env` e execute:
 npm run create-admin
 ```
 Depois entre no aplicativo com o e-mail e a senha definidos. Troque a senha padrão antes de publicar.
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=7ED957&height=100&section=footer"/>
