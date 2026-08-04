@@ -57,7 +57,7 @@ Link: [TRELLO](https://trello.com/invite/b/69b1f4309af483167f370135/ATTIb7651731
 
 ## 🧑🏻‍🏫  Banca Final da Apresentação
 
-[Apresentação Banca Final](https://canva.link/3co4i425gm23dnk)
+[Apresentação Banca Final](https://canva.link/g1j17k6v2p3790d)
 
 
 ---
