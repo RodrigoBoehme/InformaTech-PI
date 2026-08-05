@@ -5,6 +5,7 @@ import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "@/constants/theme";
 import { useAuth } from "@/contexts/AuthContext";
+import { hide } from "expo-router/build/utils/splash";
 
 export default function TabLayout() {
   const { user } = useAuth();
@@ -20,7 +21,7 @@ export default function TabLayout() {
               backgroundColor: "#000000",
               borderTopWidth: 0,
               height: 100,
-              opacity: 50,
+              opacity: 100,
             },
 
             tabBarActiveTintColor: colors.primary,
@@ -40,7 +41,7 @@ export default function TabLayout() {
           />
           
           <Tabs.Screen 
-          name="map3"
+          name="map"
           options={{
             title:"Mapa",
              tabBarIcon: ({ color, size }) => (
@@ -82,7 +83,7 @@ export default function TabLayout() {
               ),
             }}
           />
-                    <Tabs.Screen
+          <Tabs.Screen
             name="map"
             options={{
               title: "Mapa",
@@ -104,16 +105,23 @@ export default function TabLayout() {
     return (
       //
       <AuthProvider>
+        
         <Tabs
+        
           screenOptions={{
             headerShown: false,
 
             tabBarStyle: {
               backgroundColor: "#6a2e2e00",
               borderTopWidth: 0,
-              height: 80,
+              height: 100,
             },
 
+
+            tabBarItemStyle:{
+              backgroundColor:"#fff",
+                opacity:80 
+            },
             tabBarActiveTintColor: colors.primary,
 
             tabBarInactiveTintColor: "#777",
@@ -122,7 +130,7 @@ export default function TabLayout() {
           <Tabs.Screen
             name="home"
             options={{
-              title: "HomeScreen",
+              title: "Inicio",
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="home" size={size} color={color} />
               ),
@@ -134,7 +142,7 @@ export default function TabLayout() {
               title: "Mapa",
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="map" size={size} color={color} />
-              ),href:null
+              ),
             }}
             
           />
@@ -142,8 +150,10 @@ export default function TabLayout() {
           name="map3"
           options={{
             title:"Mapa",
-             tabBarIcon: ({ color, size }) => (
-                <Ionicons name="map" size={size} color={color} />)
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="map" size={size} color={color} />
+            ),
+            href:null
           }}
           />
 
