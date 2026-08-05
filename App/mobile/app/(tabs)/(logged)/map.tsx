@@ -8,6 +8,7 @@ import { Input } from "@/components/Input";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/services/api";
 import { NivelInundacao, Pedido, ZonaRiscoV2 } from "@/types";
+import { colors } from "@/constants/theme";
 
 
 const emptyForm = {
@@ -38,6 +39,7 @@ export default function MapScreen() {
   const web = useRef<WebView>(null);
   const [zoneMode, setZoneMode] = useState(false);
   const [selectedRisk, setSelectedRisk] = useState<RiskLevel>("ALTO");
+  const [isFormsOpen,setIsFormsOpen]=useState(true)
 
   const load = useCallback(async () => {
     try {
@@ -61,6 +63,11 @@ export default function MapScreen() {
 
   function sendToMap(data: object) {
     web.current?.postMessage(JSON.stringify(data));
+  }
+
+  function handleHidingForms(){
+    const newValue=!isFormsOpen
+    setIsFormsOpen(newValue)
   }
 
   function handleCreateZone() {
@@ -274,9 +281,7 @@ export default function MapScreen() {
     <body>
       <div id="map"></div>
 
-      <div id="zoneMessage" class="zone-message">
-        Toque no mapa para adicionar pontos ao polígono
-      </div>
+      
 
       <script>
         const requests = ${markers};
@@ -510,14 +515,15 @@ export default function MapScreen() {
             contentContainerStyle={{ gap: 8 }}
             keyboardShouldPersistTaps="handled"
           >
-            <View>
-            <Text style={{ fontSize: 18, fontWeight: "800" }}>
+            {isFormsOpen&& <View style={{gap:8}}>
+            <Text style={{ fontSize: 17, fontWeight: "800" }}>
               Administração das zonas de risco
             </Text>
             <Text style={{ color: "#66778A" }}>
               Informe os dados, escolha o raio e toque no mapa para posicionar a
               zona.
             </Text>
+
             <Input
               placeholder="Nome da zona"
               value={form.name}
@@ -550,8 +556,27 @@ export default function MapScreen() {
                 }
               />
             </View>
+
+
             <Text style={{ fontWeight: "700" }}>Nível de inundação</Text>
-            </View>
+          </View>}
+            
+          <Pressable onPress={handleHidingForms} style={
+                {
+                    borderColor:colors.muted,
+                    alignSelf:"center",
+                    backgroundColor:"#fff",
+                    borderRadius:20,
+                    flex:1,
+                    borderWidth:1,
+                    padding:14,
+                }
+            }>
+            <Text>
+              {isFormsOpen ? "Esconder Formulario":"Mostrar Formulario"}
+            </Text>
+            
+          </Pressable>
             <View style={{ flexDirection: "row", gap: 8 }}>
               <Pressable
                 disabled={saving}
