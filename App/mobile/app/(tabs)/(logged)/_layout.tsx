@@ -5,7 +5,6 @@ import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "@/constants/theme";
 import { useAuth } from "@/contexts/AuthContext";
-import { hide } from "expo-router/build/utils/splash";
 
 export default function TabLayout() {
   const { user } = useAuth();
@@ -21,7 +20,7 @@ export default function TabLayout() {
               backgroundColor: "#000000",
               borderTopWidth: 0,
               height: 100,
-              opacity: 100,
+              opacity: 50,
             },
 
             tabBarActiveTintColor: colors.primary,
@@ -84,12 +83,21 @@ export default function TabLayout() {
             }}
           />
           <Tabs.Screen
-            name="map"
+            name="map3"
             options={{
               title: "Mapa",
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="map" size={size} color={color} />
-              ),
+              ),href:null,
+            }}
+          />
+          <Tabs.Screen
+            name="map2"
+            options={{
+              title: "Mapa",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="map" size={size} color={color} />
+              ),href:null,
             }}
           />
           <Tabs.Screen name="centralDeApoio" options={{ href: null }} />
@@ -105,23 +113,16 @@ export default function TabLayout() {
     return (
       //
       <AuthProvider>
-        
         <Tabs
-        
           screenOptions={{
             headerShown: false,
 
             tabBarStyle: {
               backgroundColor: "#6a2e2e00",
               borderTopWidth: 0,
-              height: 100,
+              height: 80,
             },
 
-
-            tabBarItemStyle:{
-              backgroundColor:"#fff",
-                opacity:80 
-            },
             tabBarActiveTintColor: colors.primary,
 
             tabBarInactiveTintColor: "#777",

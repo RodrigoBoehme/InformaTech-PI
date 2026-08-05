@@ -63,7 +63,7 @@ export default function RequestDetail() {
     )
   }
 
-  const isVolunteer = user?.role === 'VOLUNTEER' && item.status === 'OPEN'
+  const isVolunteer = (user?.role === 'VOLUNTEER'||user?.role==="ADMIN") && item.status === 'OPEN'
   const canDelete = user?.id === item.requesterId || user?.role === 'ADMIN'
 
   return (
