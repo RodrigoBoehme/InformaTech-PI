@@ -357,22 +357,12 @@ export default function MapScreen() {
               );
             polygon.on('click',()=>window.ReactNativeWebView.postMessage(JSON.stringify({type:'ZONE_SELECTED',id:z.id})))
         }catch(e){
-          window.ReactNativeWebView.postMessage(JSON.stringify({type:"POLYGON_ERROR",message:z.coords+" "+e.message
-        }
-        ))}   
+          window.ReactNativeWebView.postMessage(JSON.stringify(
+            {type:"POLYGON_ERROR",message:z.coords+" "+e.message}
+          ))
+        }   
           });
-        
-
-        // const polygon = L.polygon(latlongs , {
-        //   color: 'red',          // Stroke color
-        //   fillColor: '#f03',     // Fill color
-        //   fillOpacity: 0.25,      // Fill opacity
-        //   weight: 2              // Stroke width in pixels
-        // }).addTo(map);
-
-
-
-        
+                
         function redrawTemporaryLine() {
           if (temporaryLine) {
             map.removeLayer(temporaryLine);
@@ -688,7 +678,6 @@ export default function MapScreen() {
           </ScrollView>
         </View>
       </View>)}
-
       <WebView
         ref={web}
         originWhitelist={["*"]}
