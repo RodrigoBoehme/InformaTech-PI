@@ -239,7 +239,6 @@ export default function MapScreen() {
       coords:String(zone.coords)
     }))
   )
-  let dummyCoords="[[-29.79088169129726,-51.157665252685554],[-29.801761459911827,-51.162471771240234],[-29.802139638317428,-51.15217208862305]]"
 
   const html = `
   <!DOCTYPE html>
@@ -285,7 +284,6 @@ export default function MapScreen() {
 
       <script>
         const requests = ${markers};
-        // const latlongs=${dummyCoords};
         const zones=${zonesMap};
 
         
@@ -299,10 +297,10 @@ export default function MapScreen() {
         let temporaryLine = null;
 
         function getRiskColor(risk) {
-          if (risk === 'CRITICO') return 'BLACK';
-          if (risk === 'ALTO') return 'RED';
-          if (risk === 'MODERADO') return 'YELLOW';
-          if (risk === 'BAIXO') return 'green';
+          if (risk === 'CRITICO') return '#1a1919';
+          if (risk === 'ALTO') return '#da3232';
+          if (risk === 'MODERADO') return '#eab308';
+          if (risk === 'BAIXO') return '#16a34a';
           return 'blue';
         }
 

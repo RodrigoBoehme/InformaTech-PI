@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Alert, StyleSheet, Text, View, ScrollView ,useWindowDimensions} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
-import { Header } from '@/components/Header'
 import { Screen } from '@/components/Screen'
 import { Input } from '@/components/Input'
 import { Button } from '@/components/Button'
