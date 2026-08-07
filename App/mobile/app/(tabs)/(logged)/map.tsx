@@ -87,6 +87,7 @@ export default function MapScreen() {
     setForm(emptyForm);
     sendToMap({ type: "CANCEL_DRAW" });
     handleRiskChange(form.floodLevel)
+    
   }
 
   async function save() {
@@ -181,7 +182,7 @@ export default function MapScreen() {
 
       Alert.alert(
         "Zona criada",
-        `Risco: ${data.risk}\nPontos: ${data.coordinates}`,
+        `Risco: ${data.risk}\nPontos: ${data.coordinates.length}`,
       );
     }
 

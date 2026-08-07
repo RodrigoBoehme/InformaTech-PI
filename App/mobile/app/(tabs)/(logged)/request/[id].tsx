@@ -34,9 +34,19 @@ export default function RequestDetail() {
     }, [load])
   )
 
+  async function aceitar(id: string) {
+    try {
+      await api.patch(`/pedidos/${id}/aceitar`)
+      Alert.alert('Sucesso', 'Atendimento aceito com sucesso!')
+      load()
+    } catch {
+      Alert.alert('Erro', 'Não foi possível aceitar o atendimento.')
+    }
+  }
   async function offer() {
     try {
       await api.post('/ajudas', { requestId: id, message })
+      aceitar(id)
       Alert.alert('Ajuda oferecida', 'Sua oferta foi registrada com sucesso.')
     } catch {
       Alert.alert('Erro', 'Não foi possível enviar a oferta de ajuda.')

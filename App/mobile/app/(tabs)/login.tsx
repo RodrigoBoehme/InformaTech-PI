@@ -25,8 +25,8 @@ export default function Login() {
       setLoading(true)
       await signIn(normalizedEmail, password)
       router.replace('/(logged)/home')
-    } catch(e) {
-      Alert.alert('Erro', 'Não foi possível entrar. Verifique e-mail e senha.'+e)
+    } catch {
+      Alert.alert('Erro', 'Não foi possível entrar. Verifique e-mail e senha.')
     } finally {
       setLoading(false)
     }
