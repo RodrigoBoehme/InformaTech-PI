@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {
   Alert,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,7 +10,7 @@ import {
 } from 'react-native'
 import * as Location from 'expo-location'
 import { router } from 'expo-router'
-
+import { Dropdown } from 'react-native-element-dropdown'
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 import { Screen } from '@/components/Screen'
@@ -18,8 +19,24 @@ import Background1 from '@/components/Background'
 import { api } from '@/services/api'
 import { colors } from '@/constants/theme'
 
+const data=[
+  {label:"Baixa",value:"LOW"},
+  {label:"Media",value:"MEDIUM"},
+  {label:"Alta",value:"HIGH"},
+  {label:"Critica",value:"CRITICAL"}
+]
+const data2=[
+  {label:"Comida",value:"Comida"},
+  {label:"Resgate",value:"Resgate"},
+  {label:"Roupas",value:"Roupas"},
+  {label:"Limpeza",value:"Limpeza"},
+]
+
 export default function NewRequest() {
+  const [preciseCoords,setPreciseCoords]=useState(false)
   const { width, height } = useWindowDimensions()
+  const [value,setValue]=useState("HIGH")
+  const [value2,setValue2]=useState("Resgate")
 
   const [form, setForm] = useState({
     title: '',
@@ -106,16 +123,51 @@ export default function NewRequest() {
 
           <View style={s.fieldGroup}>
             <Text style={s.label}>CATEGORIA E PRIORIDADE</Text>
-            <Input
+            {/* <Input
               placeholder="Categoria (ex: Resgate, Alimentos)"
               value={form.category}
               onChangeText={(category) => setForm({ ...form, category })}
-            />
-            <Input
+            /> */}
+
+                  <Dropdown
+                style={styles.dropdown}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                iconStyle={styles.iconStyle}
+                data={data2}
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder="Selecione uma Categoria"
+                value={value2}
+                onChange={item => {
+                  setValue2(item.value)
+                form.category=item.value;
+              }}
+      />
+            {/* <Input
               placeholder="Prioridade (LOW, MEDIUM, HIGH, CRITICAL)"
               value={form.priority}
               onChangeText={(priority) => setForm({ ...form, priority })}
             />
+             */}
+              <Dropdown
+                style={styles.dropdown}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                iconStyle={styles.iconStyle}
+                data={data}
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder="Selecione uma Prioridade"
+                value={value}
+                onChange={item => {
+                form.priority=item.value
+                setValue(item.value);
+                }}
+      />
+
           </View>
 
           <View style={s.fieldGroup}>
@@ -131,8 +183,17 @@ export default function NewRequest() {
               variant="outline"
               onPress={locate}
             />
+            <Pressable
+            onPress={()=>{setPreciseCoords(!preciseCoords)}}
+            >
+              <Text
+              style={{color:"#fff",alignSelf:'center'}}
+              >
+                Digitar Localização? 
+              </Text>
+            </Pressable>
 
-            <View style={s.row}>
+            {preciseCoords&&<View style={s.row}>
               <View style={s.flex1}>
                 <Input
                   placeholder="Latitude"
@@ -149,7 +210,7 @@ export default function NewRequest() {
                   onChangeText={(longitude) => setForm({ ...form, longitude })}
                 />
               </View>
-            </View>
+            </View>}
           </View>
         </View>
 
@@ -211,3 +272,34 @@ const s = StyleSheet.create({
     fontSize: 12,
   },
 })
+
+
+  const styles = StyleSheet.create({
+    dropdown: {
+      margin: 0,
+      height: 50,
+      borderBottomColor: 'gray',
+      borderBottomWidth: 0.5,
+      backgroundColor:"#fff",
+      flex:1,
+      padding:15,
+      borderRadius:10
+    },
+    icon: {
+      marginRight: 5,
+    },
+    placeholderStyle: {
+      fontSize: 16,
+    },
+    selectedTextStyle: {
+      fontSize: 16,
+    },
+    iconStyle: {
+      width: 20,
+      height: 20,
+    },
+    inputSearchStyle: {
+      height: 40,
+      fontSize: 16,
+    },
+  });

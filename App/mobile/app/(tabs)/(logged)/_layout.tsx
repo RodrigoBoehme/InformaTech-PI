@@ -147,18 +147,6 @@ export default function TabLayout() {
             }}
             
           />
-          <Tabs.Screen 
-          name="map3"
-          options={{
-            title:"Mapa",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="map" size={size} color={color} />
-            ),
-            href:null
-          }}
-          />
-
-          <Tabs.Screen name="map2" options={{ href: null }} />
           <Tabs.Screen name="new-request" options={{ href: null }} />
 
           <Tabs.Screen name="users" options={{ href: null }} />
