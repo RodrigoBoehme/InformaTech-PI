@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     marginBottom: 12
   },
   cardHeader: {
-    color: '#35e6c6',
+    color: colors.primary,
     fontSize: 16,
     fontWeight: '700',
     marginBottom: 6
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   primaryButton: {
-    backgroundColor: '#35e6c6',
+    backgroundColor: colors.primary,
     width: '100%',
     height: 48,
     borderRadius: 12,

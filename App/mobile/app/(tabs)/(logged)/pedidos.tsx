@@ -12,7 +12,7 @@ import { Dropdown } from "react-native-element-dropdown"
 
 
 const data=[
-  {label:"",value:""},
+  {label:"Todos",value:""},
   {label:"Baixa",value:"LOW"},
   {label:"Media",value:"MEDIUM"},
   {label:"Alta",value:"HIGH"},
@@ -33,7 +33,6 @@ export default function Pedidos() {
   const { height, width } = useWindowDimensions()
   const { user } = useAuth()
 
-  const [params,setParams]=useState("")
   const [items, setItems] = useState<Pedido[]>([])
   const [loading, setLoading] = useState(false)
   const [value,setValue]=useState("HIGH")
@@ -41,7 +40,7 @@ export default function Pedidos() {
   const load = useCallback(async () => {
     setLoading(true)
       try {
-        const response = await api.get('/pedidos'+`?p=${value}`)
+        const response = await api.get('/pedidos')
         setItems(response.data)
       } catch {
         Alert.alert('Erro', 'Não foi possível carregar os pedidos.')
@@ -86,7 +85,7 @@ export default function Pedidos() {
                 value={value}
                 onChange={item => {
                   setValue(item.value)
-                  router.replace("/pedidos")
+                  load()
                 }}
             />
 
@@ -109,10 +108,11 @@ export default function Pedidos() {
         renderItem={({ item }) => {
           const isOpen = item.status === 'OPEN'
           const isVolunteer = user?.role === 'VOLUNTEER'
-
-          return (
+          const p=item.priority
+          if(p===value||value===""){return (
             <Pressable
               style={s.card}
+              
               onPress={() =>
                 router.push({
                   pathname: '/request/[id]',
@@ -146,16 +146,8 @@ export default function Pedidos() {
               </Text>
 
               {/* Ação rápida para Voluntários */}
-              {isOpen && isVolunteer && (
-                <View style={s.cardAction}>
-                  <Button
-                    title="Aceitar atendimento"
-                    onPress={() => aceitar(item.id)}
-                  />
-                </View>
-              )}
             </Pressable>
-          )
+          )}else return null
         }}
       />
 
@@ -280,12 +272,13 @@ const s = StyleSheet.create({
 
   const styles = StyleSheet.create({
     dropdown: {
-      margin: 0,
+      margin: 10,
       height: 50,
-      color:"#fff",
+      color:"#030303",
+      fontWeight:"bold",
       borderBottomColor: 'gray',
       borderBottomWidth: 0.5,
-      backgroundColor:"#ffffff00",
+      backgroundColor:"#ffffffd0",
       flex:0,
       padding:15,
       borderRadius:10
@@ -298,7 +291,7 @@ const s = StyleSheet.create({
     },
     selectedTextStyle: {
       fontSize: 16,
-      color:"#fff",
+      color:"#000000",
       
     },
     iconStyle: {

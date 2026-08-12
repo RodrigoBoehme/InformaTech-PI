@@ -17,7 +17,7 @@ export default function TabLayout() {
           screenOptions={{
             headerShown: false,
             tabBarStyle: {
-              backgroundColor: "#000000",
+              backgroundColor: "#fff",
               borderTopWidth: 0,
               height: 100,
               opacity: 50,
@@ -48,11 +48,6 @@ export default function TabLayout() {
           }}
           />
 
-
-
-
-          <Tabs.Screen name="new-request" options={{ href: null }} />
-
           <Tabs.Screen
             name="users"
             options={{
@@ -62,7 +57,7 @@ export default function TabLayout() {
               ),
             }}
           />
-          <Tabs.Screen name="request/[id]" options={{ href: null }} />
+
           <Tabs.Screen
             name="helps"
             options={{
@@ -82,26 +77,18 @@ export default function TabLayout() {
               ),
             }}
           />
-          <Tabs.Screen
-            name="map3"
+                    <Tabs.Screen 
+            name="pedidos" 
             options={{
-              title: "Mapa",
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="map" size={size} color={color} />
-              ),href:null,
+              title:"Pedidos",
+              tabBarIcon:({color,size})=>(
+                <Ionicons name="logo-xbox" size={size} color={color}/>
+              )
             }}
           />
-          <Tabs.Screen
-            name="map2"
-            options={{
-              title: "Mapa",
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="map" size={size} color={color} />
-              ),href:null,
-            }}
-          />
+          <Tabs.Screen name="request/[id]" options={{ href: null }} />
           <Tabs.Screen name="centralDeApoio" options={{ href: null }} />
-
+          <Tabs.Screen name="new-request" options={{ href: null }} />
           <Tabs.Screen name="preparos" options={{ href: null }} />
 
         </Tabs>
@@ -116,15 +103,12 @@ export default function TabLayout() {
         <Tabs
           screenOptions={{
             headerShown: false,
-
             tabBarStyle: {
-              backgroundColor: "#6a2e2e00",
+              backgroundColor: "#fff",
               borderTopWidth: 0,
               height: 80,
             },
-
             tabBarActiveTintColor: colors.primary,
-
             tabBarInactiveTintColor: "#777",
           }}
         >
@@ -147,10 +131,7 @@ export default function TabLayout() {
             }}
             
           />
-          <Tabs.Screen name="new-request" options={{ href: null }} />
 
-          <Tabs.Screen name="users" options={{ href: null }} />
-          <Tabs.Screen name="request/[id]" options={{ href: null }} />
           <Tabs.Screen
             name="helps"
             options={{
@@ -171,10 +152,21 @@ export default function TabLayout() {
               ),
             }}
           />
-
+          <Tabs.Screen 
+            name="pedidos" 
+            options={{
+              href:user.role==="REQUESTER"? null: "/pedidos",
+              title:"Pedidos",
+              tabBarIcon:({color,size})=>(
+                <Ionicons name="logo-xbox" size={size} color={color}/>
+              )
+            }}
+          />
           <Tabs.Screen name="preparos" options={{ href: null }} />
-
           <Tabs.Screen name="centralDeApoio" options={{ href: null }} />
+          <Tabs.Screen name="new-request" options={{ href: null }} />
+          <Tabs.Screen name="users" options={{ href: null }} />
+          <Tabs.Screen name="request/[id]" options={{ href: null }} />
         </Tabs>
       </AuthProvider>
     );

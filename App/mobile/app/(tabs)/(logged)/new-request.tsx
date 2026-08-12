@@ -173,7 +173,7 @@ export default function NewRequest() {
           <View style={s.fieldGroup}>
             <Text style={s.label}>LOCALIZAÇÃO</Text>
             <Input
-              placeholder="Endereço ou Ponto de referência"
+              placeholder="Ponto de referência"
               value={form.address}
               onChangeText={(address) => setForm({ ...form, address })}
             />

@@ -11,22 +11,18 @@ import {
 } from 'react-native'
 import { router } from 'expo-router'
 import { colors } from '@/constants/theme'
+import { Screen } from '@/components/Screen'
+import Background1 from '@/components/Background'
 
 export default function Preparos(): React.JSX.Element {
   const { width, height } = useWindowDimensions()
 
-  const dynamicGlowTopStyle: ViewStyle = {
-    top: -height * 0.3,
-    right: -width * 0.5,
-    width: width * 1.2,
-    height: width * 1.2,
-    borderRadius: (width * 1.2) / 2
-  }
-
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+
+    <Screen headr={{title:"Prepa",title2ndPart:"rativos"}}>
+      <Background1 width={width} height={height}/>
+      
       {/* Luz de fundo */}
-      <View style={[styles.glowTop, dynamicGlowTopStyle]} />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -113,7 +109,7 @@ export default function Preparos(): React.JSX.Element {
           <Text style={styles.secondaryButtonText}>← Voltar para a Central</Text>
         </Pressable>
       </ScrollView>
-    </View>
+      </Screen>      
   )
 }
 
@@ -189,7 +185,7 @@ const styles = StyleSheet.create<Styles>({
     gap: 6
   },
   cardTitle: {
-    color: '#35e6c6',
+    color: colors.primary,
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 6,
