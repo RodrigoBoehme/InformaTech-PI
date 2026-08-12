@@ -41,7 +41,7 @@ export default function Home() {
   const load = useCallback(async () => {
     setLoading(true)
     try {
-      const response = await api.get('/pedidos')
+      const response = await api.get(`/pedidos?meus=true`)
       setItems(response.data)
     } catch {
       Alert.alert('Erro', 'Não foi possível carregar os pedidos.')
@@ -99,7 +99,7 @@ export default function Home() {
         </View>
 
         {/* Lista de Pedidos */}
-        <Text style={s.sectionTitle}>Pedidos recentes</Text>
+        <Text style={s.sectionTitle}>Meus Pedidos recentes</Text>
 
         <FlatList
           data={items}

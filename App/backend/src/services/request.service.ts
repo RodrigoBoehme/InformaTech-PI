@@ -14,8 +14,8 @@ interface UpdateRequestInput extends Partial<CreateRequestInput> { status?: Requ
 export class RequestService {
   constructor(private readonly requests = new RequestRepository()) {}
 
-  list(actor: Actor, onlyMine: boolean) {
-    return this.requests.findAll(onlyMine ? { requesterId: actor.id } : {})
+  list(actor: Actor, onlyMine: boolean,p:any) {
+    return this.requests.findAll(onlyMine ? { requesterId: actor.id } : p?{priority:p} : {})
   }
 
   async findById(id: string) {

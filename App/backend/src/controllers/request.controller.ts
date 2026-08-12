@@ -4,7 +4,7 @@ import { RequestService } from '../services/request.service'
 const service = new RequestService()
 
 export async function listRequests(req: Request, res: Response, next: NextFunction) {
-  try { return res.json(await service.list(req.user!, req.query.meus === 'true')) } catch (error) { return next(error) }
+  try { return res.json(await service.list(req.user!, req.query.meus === 'true',req.query.priority=req.params.priority)) } catch (error) { return next(error) }
 }
 export async function getRequest(req: Request, res: Response, next: NextFunction) {
   try { return res.json(await service.findById(req.params.id)) } catch (error) { return next(error) }
